@@ -13,3 +13,11 @@ export async function PUT(request, { params }) {
     return NextResponse.json({ message: "Finally may be  updated" }, { status: 200 });
   }
   
+
+  export async function GET(request, { params }) {
+    const { id } = params;
+    await connectMongoDB();
+    const topic= await Topic.findOne({_id:id});
+    return NextResponse.json({ topic }, { status: 200 });
+  }
+  
