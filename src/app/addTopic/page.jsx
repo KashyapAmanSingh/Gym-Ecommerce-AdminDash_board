@@ -43,7 +43,7 @@ const AddTopic = () => {
         <br />
         <input type="text" placeholder='Topic Description' value={description} onChange={(e) => setDescription(e.target.value)} />
         <br />
-        <input type="text" placeholder='Topic Optimised Image URL' value={optimisedImageUrl} onChange={(e) => setOptimisedImageUrl(e.target.value)} />
+        <input type="text" placeholder='Topic Optimised Image URL' value={optimisedImageUrl}  onChange={(e) => setOptimisedImageUrl(e.target.value)} />
         <br />
         <button type="submit" className='btn btn-info mt-1'>Add topics</button>
       </form>

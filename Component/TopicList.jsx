@@ -52,6 +52,14 @@ export default function TopicList() {
           <div className='row'>
             <div className='d-flex'>
               <h2 className='fw-bold ml-5'>Topic Description: {value.description}</h2>
+              {value.image && (
+  <img
+    src={value.image}
+    style={{ height: '150px', width: '200px' }} // Replace '100px' and '200px' with your desired height and width
+    alt={`Image for ${value.title}`}
+  />
+)}
+
             </div>
           </div>
         </div>
