@@ -41,7 +41,7 @@ export default function TopicList() {
               <h2 className='fw-bold '>Topic Title: {value.title}</h2>
               {/* <h2 className='fw-bold '>Topic createdAt: {value.createdAt}</h2> */}
 
-              <Removebtn />
+              <Removebtn id={value._id} />
               <div>
                 <Link href={`/editTopic/${value._id}`}>
                   <FcEditImage /> Edit
