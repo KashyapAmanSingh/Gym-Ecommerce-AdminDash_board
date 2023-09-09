@@ -4,9 +4,8 @@ import cloudinary from 'cloudinary-core'; // Import the Cloudinary library
 
 const cloudinaryCore = new cloudinary.Cloudinary({ cloud_name: 'dm2wuzfzc' });
 
-function ImageUpload() {
+function ImageUpload({ setOptimisedImageUrl,OptimisedImageUrl}) {
   const [selectedFile, setSelectedFile] = useState(null);
-  const [OptimisedImageUrl, setOptimisedImageUrl] = useState('');
 
   const handleFileSelect = (e) => {
     const file = e.target.files[0];
@@ -28,10 +27,10 @@ function ImageUpload() {
         if (response.status === 200) {
           const { secure_url } = response.data;
           const optimizedImageUrl = cloudinaryCore.url(secure_url, {
-            width: 500, // Specify the desired width
-            crop: 'fill', // Choose the cropping mode
-            quality: 'auto', // Automatically adjust image quality
-            fetch_format: 'auto', // Automatically select the best format
+            width: 500, 
+            crop: 'fill', 
+            quality: 'auto',  
+            fetch_format: 'auto',  
           });
 
           setOptimisedImageUrl(optimizedImageUrl);
@@ -65,7 +64,9 @@ function ImageUpload() {
           <p>This is the final URL: {OptimisedImageUrl}</p>
         </div>
       )}
+     
     </div>
+    
   );
 }
 
