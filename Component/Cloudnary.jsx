@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import axios from 'axios'; // Import axios
+import cloudinary from 'cloudinary-core'; // Import the Cloudinary library
+
+const cloudinaryCore = new cloudinary.Cloudinary({ cloud_name: 'dm2wuzfzc' });
 
 function ImageUpload() {
   const [selectedFile, setSelectedFile] = useState(null);
-  const [imageUrl, setImageUrl] = useState('');
+  const [OptimisedImageUrl, setOptimisedImageUrl] = useState('');
 
   const handleFileSelect = (e) => {
     const file = e.target.files[0];
@@ -24,7 +27,14 @@ function ImageUpload() {
 
         if (response.status === 200) {
           const { secure_url } = response.data;
-          setImageUrl(secure_url);
+          const optimizedImageUrl = cloudinaryCore.url(secure_url, {
+            width: 500, // Specify the desired width
+            crop: 'fill', // Choose the cropping mode
+            quality: 'auto', // Automatically adjust image quality
+            fetch_format: 'auto', // Automatically select the best format
+          });
+
+          setOptimisedImageUrl(optimizedImageUrl);
         } else {
           console.error('Image upload failed');
         }
@@ -48,10 +58,11 @@ function ImageUpload() {
         Upload Image
       </button>
 
-      {imageUrl && (
+      {OptimisedImageUrl && (
         <div>
           <p>Uploaded Image:</p>
-          <img src={imageUrl} alt="Uploaded" />
+          <img src={OptimisedImageUrl} alt="Uploaded" />
+          <p>This is the final URL: {OptimisedImageUrl}</p>
         </div>
       )}
     </div>
@@ -62,16 +73,4 @@ export default ImageUpload;
 
 
 
-
-
-
-// const cloudinary = require('cloudinary').v2;
-
-// cloudinary.config({
-//   cloud_name: 'dm2wuzfzc',
-//   api_key: '187424734279379',
-//   api_secret: 'X-nlZM36YigMzYyDOSgAdw3YP-o',
-// });
-
-// // module.exports = cloudinary;
 
