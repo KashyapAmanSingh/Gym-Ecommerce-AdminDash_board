@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 
 const EditTopicForm = ({ id, title, description }) => {
+ 
   const [newTitle, setNewTitle] = useState(title);
   const [newDescription, setNewDescription] = useState(description);
 
@@ -26,16 +27,13 @@ const EditTopicForm = ({ id, title, description }) => {
         },
         body: JSON.stringify({ newTitle, newDescription }),
       });
-  
-      if (!res.ok) {
-        throw new Error(`Failed to update`);
-      } else {
-        // Update the state with the new values after a successful update
-        setNewTitle(newTitle);
-        setNewDescription(newDescription);
-  
-        window.location.href = "/";
-      }
+ 
+if (!res.ok) {
+  throw new Error(`Failed to update`);
+} else {
+  window.location.href = "/";
+}
+
     } catch (error) {
       console.error('Updation error:', error);
     }

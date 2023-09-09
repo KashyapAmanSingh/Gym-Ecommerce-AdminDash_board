@@ -1,11 +1,14 @@
 "use client";
 import React from 'react';
 import EditTopicForm from '../../../../Component/EditTopicForm';
+ 
+
+
 
 const getTopicById = async (id) => {
   try {
     const apiPort = process.env.NEXT_PUBLIC_API_PORT || 3000;
-    const apiUrl = `http://localhost:${apiPort}/api/topics/${id}`; // Updated endpoint
+    const apiUrl = `http://localhost:${apiPort}/api/topics/${id}`; 
 
     const res = await fetch(apiUrl, {
       cache: 'no-store',

@@ -1,5 +1,6 @@
 "use client"
 import React, { useState } from 'react';
+import ImageUpload from '../../../Component/Cloudnary';
 
 const AddTopic = () => {
   const [title, setTitles] = useState('');
@@ -46,6 +47,7 @@ const AddTopic = () => {
         <br />
         <button type="submit" className='btn btn-info mt-1' >Add topics</button>
       </form>
+      <ImageUpload/>
     </div>
   );
 }
