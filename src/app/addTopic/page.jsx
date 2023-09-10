@@ -123,19 +123,23 @@ return NextResponse.error("Failed to create the topic", { status: 500 });
         <div class="mb-3 mt-3">
           <label htmlFor="category">Enter Category:</label>
 
+ 
 
-          <select
-            className="form-select"
-            name='category'
-             id='category'
-            value={productData.category} onChange={handleChange} required
-          >
-            <option value="">Select Category</option>
-            {["Supplements", "Equipment", "Footwear", "Nutrition"].map((tagValue) => (
-              <option value={tagValue}>{tagValue}</option>
-            ))}
-          </select>
-
+<select
+  className="form-select"
+  name='category'
+  id='category'
+  value={productData.category}
+  onChange={handleChange}
+  required
+>
+  <option value="">Select Category</option>
+  {["Supplements", "Equipment", "Footwear", "Nutrition"].map((tagValue, index) => (
+    <option key={index} value={tagValue}>
+      {tagValue}
+    </option>
+  ))}
+</select>
         </div>
         <div class="mb-3 mt-3">
           <label htmlFor="brand">Enter Brand Name:</label>
@@ -166,19 +170,20 @@ return NextResponse.error("Failed to create the topic", { status: 500 });
           <label htmlFor="tags">Enter Tags:</label>
 
           <select
-            className="form-select"
-            id="tags"
-            name="tags"
-            value={productData.tags}
-            onChange={handleChange}
-          >
-            <option value="">Select an option</option>
-            {["new Arrival", "Popular", "oldest Arrival", "Months Trending", "Assured"].map((tagValue) => (
-              <option value={tagValue}>{tagValue}</option>
-            ))}
-          </select>
-
-
+  className="form-select"
+  id="tags"
+  name="tags"
+  value={productData.tags}
+  onChange={handleChange}
+>
+  <option value="">Select an option</option>
+  {["new Arrival", "Popular", "oldest Arrival", "Months Trending", "Assured"].map((tagValue, index) => (
+    <option key={index} value={tagValue}>
+      {tagValue}
+    </option>
+  ))}
+</select>
+           
 
         </div>
         <div class="mb-3 mt-3">
