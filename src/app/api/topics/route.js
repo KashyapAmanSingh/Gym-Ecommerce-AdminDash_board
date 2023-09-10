@@ -3,12 +3,54 @@ import Topic from "../../../../models/topic";
 import { NextResponse } from "next/server";
 
 export async function POST(request) {
-  const { title, description,image } = await request.json();
+  const {
+    title,
+    description,
+    image,
+    price,
+    stock,
+    discount,
+    offers,
+    category,
+    brand,
+    seller,
+    size,
+    model,
+    ratings,
+    tags,
+    legalDisclaimer,
+    manufacturingInfo,
+    dateAdded,
+  } = await request.json();
   await connectMongoDB();
-  await Topic.create({ title, description,image});
-  return NextResponse.json({ message: "Topic Created" }, { status: 201 });
-}
 
+  try {
+     await Topic.create({
+      title,
+      description,
+      image,
+      price,
+      stock,
+      discount,
+      offers,
+      category,
+      brand,
+      seller,
+      size,
+      model,
+      ratings,
+      tags,
+      legalDisclaimer,
+      manufacturingInfo,
+      dateAdded,
+    });
+  
+     return NextResponse.json({ message: "Topic Created" }, { status: 201 });
+  } catch (error) {
+     console.error(error);
+    return NextResponse.error("Failed to create the topic", { status: 500 });
+  }
+}
 export async function GET() {
   await connectMongoDB();
   const topics = await Topic.find();

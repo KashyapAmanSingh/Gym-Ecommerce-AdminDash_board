@@ -27,11 +27,20 @@ const getTopics = async () => {
 export default function TopicList() {
   const [topics, setTopics] = useState([]);
 
-  useEffect(async () => {
-    const { topics } = await getTopics();
-    setTopics(topics);
+ 
+  useEffect(() => {
+    const fetchTopics = async () => {
+      try {
+        const { topics } = await getTopics();
+        setTopics(topics);
+      } catch (error) {
+        console.error("Error loading topics", error);
+      }
+    };
+  
+    fetchTopics();
   }, []);
-
+  
   return (
     <>
       {topics.map((value) => (
