@@ -1,6 +1,6 @@
-import PropTypes from 'prop-types';
 
 "use client"
+import PropTypes from 'prop-types';
 
 import React, { useState } from 'react';
 
