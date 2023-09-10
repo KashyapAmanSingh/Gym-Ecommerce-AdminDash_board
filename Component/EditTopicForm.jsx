@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 "use client"
 
 import React, { useState } from 'react';
@@ -26,7 +28,10 @@ const EditTopicForm = ({id, topic }) => {
   
   const [formData, setFormData] = useState(initialState);
   
-
+  EditTopicForm.propTypes = {
+    id: PropTypes.number.isRequired,  
+    topic: PropTypes.object.isRequired,  
+  };
 
    
 
@@ -74,7 +79,7 @@ const EditTopicForm = ({id, topic }) => {
     <>
     
     <form onSubmit={handleSubmit}>
-        <div class="mb-3 mt-3">
+        <div className="mb-3 mt-3">
           <label htmlFor="title">Title:</label>
 
 
@@ -87,7 +92,7 @@ const EditTopicForm = ({id, topic }) => {
             onChange={handleInputChange} />
         </div>        
     
-        <div className="mb-3 mt-3">
+        <div className ="mb-3 mt-3">
   <label htmlFor="description">Description:</label>
   <textarea
     type="text"
@@ -101,7 +106,7 @@ const EditTopicForm = ({id, topic }) => {
 
 
       
-        <div class="mb-3 mt-3">
+        <div className="mb-3 mt-3">
           <label htmlFor="Price"> Enter Price:</label>
 
           <input
@@ -115,7 +120,7 @@ const EditTopicForm = ({id, topic }) => {
 
 
         </div>
-        <div class="mb-3 mt-3">
+        <div className="mb-3 mt-3">
           <label htmlFor=" stock">  Enter Stock:</label>
 
 
@@ -127,7 +132,7 @@ const EditTopicForm = ({id, topic }) => {
             value={formData.stock}
             onChange={handleInputChange} />
         </div>
-        <div class="mb-3 mt-3">
+        <div className="mb-3 mt-3">
           <label htmlFor="discount">Enter Discount:</label>
 
           <input
@@ -141,7 +146,7 @@ const EditTopicForm = ({id, topic }) => {
         </div>
 
 
-        <div class="mb-3 mt-3">
+        <div className="mb-3 mt-3">
           <label htmlFor="offers">Enter Offers:</label>
 
 
@@ -155,12 +160,12 @@ const EditTopicForm = ({id, topic }) => {
 
 
         </div>
-        <div class="mb-3 mt-3">
+        <div className="mb-3 mt-3">
           <label htmlFor="category">Enter Category:</label>
 
 
           <select
-            className="form-select"
+            className ="form-select"
             name='category'
             id='category'
             value={formData.category}
@@ -168,8 +173,8 @@ const EditTopicForm = ({id, topic }) => {
             required
           >
             <option value="">Select Category</option>
-            {["Supplements", "Equipment", "Footwear", "Nutrition"].map((tagValue) => (
-              <option value={tagValue}>{tagValue}</option>
+            {["Supplements", "Equipment", "Footwear", "Nutrition"].map((tagValue,ind) => (
+              <option value={tagValue} key={ind}>{tagValue}</option>
             ))}
           </select>
 
@@ -177,7 +182,7 @@ const EditTopicForm = ({id, topic }) => {
 
 
         </div>
-        <div class="mb-3 mt-3">
+        <div className="mb-3 mt-3">
           <label htmlFor="brand">Enter Brand Name:</label>
 
 
@@ -190,7 +195,7 @@ const EditTopicForm = ({id, topic }) => {
             onChange={handleInputChange} />
 
         </div>
-        <div class="mb-3 mt-3">
+        <div className="mb-3 mt-3">
           <label htmlFor="seller"> Enter Seller Name:</label>
 
 
@@ -206,7 +211,7 @@ const EditTopicForm = ({id, topic }) => {
 
 
         </div>
-        <div class="mb-3 mt-3">
+        <div className="mb-3 mt-3">
           <label htmlFor="size">Enter Size:</label>
 
 
@@ -217,7 +222,7 @@ const EditTopicForm = ({id, topic }) => {
             id='size'
             value={formData.size}
             onChange={handleInputChange} /> </div>
-          <div class="mb-3 mt-3">
+          <div className="mb-3 mt-3">
 
             <label htmlFor="model">Enter Model Name/Number:</label>
 
@@ -233,7 +238,7 @@ const EditTopicForm = ({id, topic }) => {
 
 
           </div>
-          <div class="mb-3 mt-3">
+          <div className="mb-3 mt-3">
             <label htmlFor="ratings">Give Rating:</label>
 
 
@@ -247,25 +252,25 @@ const EditTopicForm = ({id, topic }) => {
 
 
           </div>
-          <div class="mb-3 mt-3">
+          <div className="mb-3 mt-3">
             <label htmlFor="tags">Enter Tags:</label>
             <select
-              className="form-select"
+              className ="form-select"
               id="tags"
               name="tags"
               value={formData.tags}
               onChange={handleInputChange}
             >
               <option value="">Select an option</option>
-              {["new Arrival", "Popular", "oldest Arrival", "Months Trending", "Assured"].map((tagValue) => (
-                <option value={tagValue}>{tagValue}</option>
+              {["new Arrival", "Popular", "oldest Arrival", "Months Trending", "Assured"].map((tagValue,ind) => (
+                <option value={tagValue} key={ind}>{tagValue}</option>
               ))}
             </select>
           </div>
-          <div class="mb-3 mt-3">
+          <div className="mb-3 mt-3">
             <label htmlFor="legalDisclaimer">LegalDisclaimer:</label>
 
-            <div className="mb-3 mt-3">
+            <div className ="mb-3 mt-3">
         <label htmlFor="legalDisclaimer">LegalDisclaimer:</label>
         <textarea
           type="text"

@@ -1,9 +1,11 @@
- 
+  
 "use client"
 import React, { useState } from 'react';
 import axios from 'axios'; // Import axios
 import cloudinary from 'cloudinary-core'; // Import the Cloudinary library
 import { FcUpload } from 'react-icons/fc';
+import PropTypes from 'prop-types';
+
 
 const cloudinaryCore = new cloudinary.Cloudinary({ cloud_name: 'dm2wuzfzc' });
 
@@ -91,6 +93,10 @@ function ImageUpload({ setOptimisedImageUrl,OptimisedImageUrl}) {
     
   );
 }
+ImageUpload.propTypes = {
+  setOptimisedImageUrl: PropTypes.func.isRequired,  
+  OptimisedImageUrl: PropTypes.array.isRequired,   
+};
 
 export default ImageUpload;
 

@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 "use client";
 import React from 'react';
 import EditTopicForm from '../../../../Component/EditTopicForm';

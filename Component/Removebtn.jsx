@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 
 const Removebtn = ({ id }) => {
   const removeTopic = async () => {
@@ -25,4 +27,7 @@ const Removebtn = ({ id }) => {
   );
 };
 
+Removebtn.propTypes = {
+  id: PropTypes.any.isRequired,  
+};
 export default Removebtn;
