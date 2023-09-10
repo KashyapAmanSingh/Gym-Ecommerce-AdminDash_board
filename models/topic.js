@@ -10,10 +10,11 @@ const topicSchema = new Schema(
       type: String,
       required: [true, "Description Must be Provided, can't be empty"]
     },
-    image: {
+    images: [{
       type: String,
-      required: [true, "Image URL Must be Provided, can't be empty"]
-    },
+      required: [true, "Image must be provided"],
+    }],
+    
     price: {
       type: Number,
       required: [true, "Enter Price, it can't be empty"]

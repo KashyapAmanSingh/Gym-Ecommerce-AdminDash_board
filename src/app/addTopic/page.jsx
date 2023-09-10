@@ -3,12 +3,12 @@ import React, { useState } from 'react';
 import ImageUpload from '../../../Component/Cloudnary';
 
 const AddTopic = () => {
-  const [OptimisedImageUrl, setOptimisedImageUrl] = useState();
-
+  const [OptimisedImageUrl, setOptimisedImageUrl] = useState([]);
+console.log("==============OptimisedImageUrl================",OptimisedImageUrl)
   const [productData, setProductData] = useState({
     title: '',
     description: '',
-    image: '',
+  
     price: 0,
     stock: 0,
     discount: 0,
@@ -23,9 +23,7 @@ const AddTopic = () => {
     legalDisclaimer: '',
     manufacturingInfo: '',
   });
-  
-  console.log('================================productData productData productData', productData)
-
+   
   const handleChange = (e) => {
     const { name, value } = e.target;
 
@@ -40,11 +38,7 @@ const AddTopic = () => {
     }
   };
 
-
-  console.log("productData.tags", productData.tags)
-
-  console.log('================================productData productData productData', productData)
-
+ 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -56,14 +50,13 @@ const AddTopic = () => {
       const res = await fetch(apiUrl, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-
-     
-
+  
         body: JSON.stringify({
           ...productData,
-     image:OptimisedImageUrl,
+          images: OptimisedImageUrl, 
           dateAdded: new Date(),
         }),
+        
         
       });
       if (res.ok) {
@@ -96,17 +89,16 @@ return NextResponse.error("Failed to create the topic", { status: 500 });
 
 
         </div>
-        <div class="mb-3 mt-3">
+        {/* <div class="mb-3 mt-3">
           <label htmlFor="ImageUrl">Upload Image:</label>
 
           <input type="text" placeholder='Upload Image ' name='ImageUrl' id='ImageUrl' value={OptimisedImageUrl} onChange={handleChange} />
 
-        </div>
+        </div> */}
         <div class="mb-3 mt-3">
           <label htmlFor="Price"> Enter Price:</label>
 
-          {/* <input type="text" placeholder='Enter Price' name='Price' id='Price' value={productData.price} onChange={handleChange} required /> */}
-          <input placeholder='Enter Price' name='price' id='Price' value={productData.price} onChange={handleChange} required />
+           <input placeholder='Enter Price' name='price' id='Price' value={productData.price} onChange={handleChange} required />
 
         </div>
         <div class="mb-3 mt-3">

@@ -106,3 +106,28 @@ a {
     color-scheme: dark;
   }
 }
+
+
+
+
+ #file-upload-btn {
+  border: 3px solid red;
+  height: 9rem;
+  width: 8rem;
+  margin: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+/* Hide the default file input */
+#image_input {
+  display: none;
+}
+#image_preview {
+  height: 20rem;
+  width: 18rem;
+  margin-left: 3rem;
+}

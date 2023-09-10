@@ -27,7 +27,7 @@ const getTopics = async () => {
 export default function TopicList() {
   const [topics, setTopics] = useState([]);
 
- 
+
   useEffect(() => {
     const fetchTopics = async () => {
       try {
@@ -37,10 +37,10 @@ export default function TopicList() {
         console.error("Error loading topics", error);
       }
     };
-  
+
     fetchTopics();
   }, []);
-  
+
   return (
     <>
       {topics.map((value) => (
@@ -48,7 +48,6 @@ export default function TopicList() {
           <div className='row'>
             <div className='d-flex'>
               <h2 className='fw-bold '>Topic Title: {value.title}</h2>
-              {/* <h2 className='fw-bold '>Topic createdAt: {value.createdAt}</h2> */}
 
               <Removebtn id={value._id} />
               <div>
@@ -62,12 +61,12 @@ export default function TopicList() {
             <div className='d-flex'>
               <h2 className='fw-bold ml-5'>Topic Description: {value.description}</h2>
               {value.image && (
-  <img
-    src={value.image}
-    style={{ height: '150px', width: '200px' }} // Replace '100px' and '200px' with your desired height and width
-    alt={`Image for ${value.title}`}
-  />
-)}
+                <img
+                  src={value.image}
+                  style={{ height: '150px', width: '200px' }}
+                  alt={`Image for ${value.title}`}
+                />
+              )}
 
             </div>
           </div>

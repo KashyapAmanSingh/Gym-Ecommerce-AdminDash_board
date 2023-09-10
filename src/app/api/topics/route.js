@@ -6,7 +6,6 @@ export async function POST(request) {
   const {
     title,
     description,
-    image,
     price,
     stock,
     discount,
@@ -20,6 +19,7 @@ export async function POST(request) {
     tags,
     legalDisclaimer,
     manufacturingInfo,
+    images,
     dateAdded,
   } = await request.json();
   await connectMongoDB();
@@ -28,7 +28,6 @@ export async function POST(request) {
      await Topic.create({
       title,
       description,
-      image,
       price,
       stock,
       discount,
@@ -42,6 +41,7 @@ export async function POST(request) {
       tags,
       legalDisclaimer,
       manufacturingInfo,
+      images,
       dateAdded,
     });
   
