@@ -2,10 +2,10 @@ import React from 'react';
 
 const Removebtn = ({ id }) => {
   const removeTopic = async () => {
-    const apiPort = process.env.NEXT_PUBLIC_API_PORT || 3000; // Default to 3000 if not set
+    const apiPort = process.env.NEXT_PUBLIC_API_PORT || 3000;  
     const apiUrl = `http://localhost:${apiPort}/api/topics?id=${id}`;
 
-    const confirmed = window.confirm('Are you sure you want to remove?'); // Use window.confirm
+    const confirmed = window.confirm('Are you sure you want to remove?');  
 
     if (confirmed) {
       const res = await fetch(apiUrl, {
@@ -13,7 +13,7 @@ const Removebtn = ({ id }) => {
       });
 
       if (res.ok) {
-        window.location.reload(); // Reload the page
+        window.location.reload();  
       }
     }
   };

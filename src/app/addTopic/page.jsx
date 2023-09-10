@@ -126,7 +126,8 @@ return NextResponse.error("Failed to create the topic", { status: 500 });
 
           <select
             className="form-select"
-            name='category' id='category'
+            name='category'
+             id='category'
             value={productData.category} onChange={handleChange} required
           >
             <option value="">Select Category</option>

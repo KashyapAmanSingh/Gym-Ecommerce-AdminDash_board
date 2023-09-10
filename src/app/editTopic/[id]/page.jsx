@@ -17,14 +17,8 @@ const getTopicById = async (id) => {
     if (!res.ok) {
       throw new Error('Failed to fetch the topic');
     }
-
     const data = await res.json();
     console.error('data fetching topic:', data);
-
-    if (!data.topic || !data.topic.title || !data.topic.description) {
-      throw new Error('Invalid API response');
-    }
-
     return data;
   } catch (error) {
     console.error('Error fetching topic:', error);
@@ -33,14 +27,15 @@ const getTopicById = async (id) => {
 }
 
 
+
 const editTopic = async ({ params }) => {
   const { id } = params;
 
   try {
     const { topic } = await getTopicById(id);
     if (topic) {
-      const { title, description } = topic;
-      return <EditTopicForm id={id} title={title} description={description} />;
+      
+      return  <EditTopicForm topic={topic} id={id}/>;
     } else {
       return <div>Error: Topic not found for this ID</div>;
     }

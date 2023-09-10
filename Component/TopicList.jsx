@@ -9,7 +9,7 @@ import Link from 'next/link';
 
 const getTopics = async () => {
   try {
-    const apiPort = process.env.NEXT_PUBLIC_API_PORT || 3000; // Default to 3000 if not set
+    const apiPort = process.env.NEXT_PUBLIC_API_PORT || 3000;  
     const apiUrl = `http://localhost:${apiPort}/api/topics`;
 
     const res = await fetch(apiUrl, {
