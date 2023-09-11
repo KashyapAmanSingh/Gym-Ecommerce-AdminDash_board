@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import Removebtn from './Removebtn';
 import { FcEditImage } from 'react-icons/fc';
 import Link from 'next/link';
-import Loader from './Progress';
+import   { Loader1 } from './Progress';
 
 const getTopics = async () => {
   try {
@@ -74,7 +74,7 @@ export default function TopicList() {
           </div>
         </div>
       ))}
-      <Loader/>
+      <div className='d-flex justify-content-center align-items-center'>    <Loader1/>       </div>
     </>
   );
 }
