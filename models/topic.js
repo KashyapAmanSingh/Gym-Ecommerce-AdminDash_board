@@ -33,8 +33,13 @@ const topicSchema = new Schema(
       type: String,
       required: [true, "Category Must be Provided, can't be empty"],
       enum: {
-        values: [  "Supplements",  "Equipment", "Footwear", "Nutrition"]
+        values: [  "Supplements",  "Equipment", "Footwear", "Nutrition","Others"]
       }
+    },
+    subcategory:{
+      type:String,
+      required: [true, "subcategory Must be Provided, can't be empty"],
+
     },
     brand: {
       type: String,
@@ -56,14 +61,14 @@ const topicSchema = new Schema(
  
     ratings: {
       type: Number,
-     
       required: false
     },
-    
- 
+    is_featured: {
+      type: Boolean,
+     },
     tags: {
       type: String,
-      enum: ["new Arrival", "Popular", "oldest Arrival","Months Trending","Assured"]
+      enum: ["new Arrival", "Popular", "oldest Arrival","Months Trending","Assured","Others"]
     },
     legalDisclaimer: {
       type: String,

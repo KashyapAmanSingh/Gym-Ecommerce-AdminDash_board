@@ -5,12 +5,13 @@ import axios from 'axios'; // Import axios
 import cloudinary from 'cloudinary-core'; // Import the Cloudinary library
 import { FcUpload } from 'react-icons/fc';
 import PropTypes from 'prop-types';
+import Loader from './Progress';
 
 
 const cloudinaryCore = new cloudinary.Cloudinary({ cloud_name: 'dm2wuzfzc' });
 
 function ImageUpload({ setOptimisedImageUrl,OptimisedImageUrl}) {
- 
+  const [isLoading, setIsLoading] = useState(false);  
   const [selectedFiles, setSelectedFiles] = useState([]);
 
   const handleFileSelect = (e) => {
@@ -19,6 +20,7 @@ function ImageUpload({ setOptimisedImageUrl,OptimisedImageUrl}) {
   };
   
   const handleImageUpload = async () => {
+    setIsLoading(true);
     if (selectedFiles.length > 0) {
       const formData = new FormData();
   
@@ -43,13 +45,15 @@ function ImageUpload({ setOptimisedImageUrl,OptimisedImageUrl}) {
             fetch_format: 'auto',
           });
   
-          // Update OptimisedImageUrl as an array
-          setOptimisedImageUrl([...OptimisedImageUrl, optimizedImageUrl]);
+           setOptimisedImageUrl([...OptimisedImageUrl, optimizedImageUrl]);
+          setIsLoading(false);
         } else {
           console.error('Image upload failed');
+          setIsLoading(false);
         }
       } catch (error) {
         console.error('Image upload error:', error);
+        setIsLoading(false);
       }
     } else {
       console.error('No file selected');
@@ -61,8 +65,18 @@ function ImageUpload({ setOptimisedImageUrl,OptimisedImageUrl}) {
     <div>
 
 
-<label htmlFor="image_input" id="file-upload-btn">
-        <FcUpload size={24} /> Upload Images
+<label htmlFor="image_input" id="file-upload-btn" className='d-flex justify-content-center align-items-center'>  
+    {isLoading ? (
+    <div className="text-center">
+  <Loader />
+  </div>
+
+              ) : (
+  <>
+    <FcUpload size={24} /> Upload Images
+  </>
+)}
+
       </label>
       <input
         type="file"
@@ -72,6 +86,7 @@ function ImageUpload({ setOptimisedImageUrl,OptimisedImageUrl}) {
         multiple
         onChange={handleFileSelect}
       />
+
       <button type="button"     className='btn btn-info' onClick={handleImageUpload}>
         Upload Image
       </button>

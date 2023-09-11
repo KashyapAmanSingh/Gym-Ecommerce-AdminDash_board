@@ -5,25 +5,28 @@ import { NextResponse } from 'next/server';
 
 const AddTopic = () => {
   const [OptimisedImageUrl, setOptimisedImageUrl] = useState([]);
-   const [productData, setProductData] = useState({
+  const [productData, setProductData] = useState({
     title: '',
     description: '',
-  
     price: 0,
     stock: 0,
     discount: 0,
     offers: '',
     category: '',
+    subcategory:'',
     brand: '',
     seller: '',
     size: 0,
     model: '',
     ratings: 0,
+    is_featured: false, 
     tags: 'new Arrival',
     legalDisclaimer: '',
     manufacturingInfo: '',
   });
-   
+
+ 
+  
   const handleChange = (e) => {
     const { name, value } = e.target;
 
@@ -33,12 +36,15 @@ const AddTopic = () => {
 
     if (name === 'category' && value === '') {
       setProductData({ ...productData, [name]: 'Supplements' });
-    } else {
+    } 
+    if (name === 'is_featured') {
+      setProductData({ ...productData,  [name]: !productData.is_featured  }); }
+    else {
       setProductData({ ...productData, [name]: value });
     }
   };
 
- 
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -50,14 +56,15 @@ const AddTopic = () => {
       const res = await fetch(apiUrl, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-  
+
         body: JSON.stringify({
           ...productData,
-          images: OptimisedImageUrl, 
+        
+          images: OptimisedImageUrl,
           dateAdded: new Date(),
         }),
-        
-        
+
+
       });
       if (res.ok) {
 
@@ -67,11 +74,11 @@ const AddTopic = () => {
       }
     } catch (error) {
       console.error(error);
-return NextResponse .error("Failed to create the topic", { status: 500 });
+      return NextResponse.error("Failed to create the topic", { status: 500 });
     }
 
 
-    
+
   };
 
   return (
@@ -89,22 +96,17 @@ return NextResponse .error("Failed to create the topic", { status: 500 });
 
 
         </div>
-        {/* <div className="mb-3 mt-3">
-          <label htmlFor="ImageUrl">Upload Image:</label>
-
-          <input type="text" placeholder='Upload Image ' name='ImageUrl' id='ImageUrl' value={OptimisedImageUrl} onChange={handleChange} />
-
-        </div> */}
+  
         <div className="mb-3 mt-3">
           <label htmlFor="Price"> Enter Price:</label>
 
-           <input placeholder='Enter Price' name='price' id='Price' value={productData.price} onChange={handleChange} required />
+          <input placeholder='Enter Price' name='price' id='Price' value={productData.price} onChange={handleChange} required />
 
         </div>
         <div className="mb-3 mt-3">
           <label htmlFor=" stock">  Enter Stock:</label>
 
-           <input placeholder='Enter stock' name='stock' id='stock' value={productData.stock} onChange={handleChange} required />
+          <input placeholder='Enter stock' name='stock' id='stock' value={productData.stock} onChange={handleChange} required />
 
         </div>
         <div className="mb-3 mt-3">
@@ -123,24 +125,36 @@ return NextResponse .error("Failed to create the topic", { status: 500 });
         <div className="mb-3 mt-3">
           <label htmlFor="category">Enter Category:</label>
 
- 
 
-<select
-  className="form-select"
-  name='category'
-  id='category'
-  value={productData.category}
-  onChange={handleChange}
-  required
->
-  <option value="">Select Category</option>
-  {["Supplements", "Equipment", "Footwear", "Nutrition"].map((tagValue, index) => (
-    <option key={index} value={tagValue}>
-      {tagValue}
-    </option>
-  ))}
-</select>
+
+          <select
+            className="form-select"
+            name='category'
+            id='category'
+            value={productData.category}
+            onChange={handleChange}
+            required
+          >
+            <option value="">Select Category</option>
+            {["Supplements", "Equipment", "Footwear", "Nutrition","Others"].map((tagValue, index) => (
+              <option key={index} value={tagValue}>
+                {tagValue}
+              </option>
+            ))}
+          </select>
+
+
+          
         </div>
+        <div className="mb-3 mt-3">
+          <label htmlFor="subcategory">Enter Sub_Category:</label>
+
+          <input placeholder='Enter Sub_Category' name='subcategory' id='subcategory' value={productData.subcategory} onChange={handleChange} />
+
+        </div>
+
+
+
         <div className="mb-3 mt-3">
           <label htmlFor="brand">Enter Brand Name:</label>
 
@@ -154,7 +168,7 @@ return NextResponse .error("Failed to create the topic", { status: 500 });
         <div className="mb-3 mt-3">
           <label htmlFor="size">Enter Size:</label>
 
-          <input  placeholder='Enter Size' name='size' id='size' value={productData.size} onChange={handleChange} />
+          <input placeholder='Enter Size' name='size' id='size' value={productData.size} onChange={handleChange} />
         </div>
         <div className="mb-3 mt-3">
           <label htmlFor="model">Enter Model Name/Number:</label>
@@ -166,24 +180,42 @@ return NextResponse .error("Failed to create the topic", { status: 500 });
 
           <input placeholder='Enter Rating' name='ratings' id='ratings' value={productData.ratings} onChange={handleChange} />
         </div>
+
+
+
+        <div className="mb-3 mt-3">
+        <div className="form-check">
+  <input
+    className="form-check-input"
+    type="checkbox"
+    id="is_featured_checkbox"
+    name="is_featured"
+    onChange={handleChange}
+  />
+  <label className="form-check-label" htmlFor="is_featured_checkbox">Featured Product</label>
+</div>
+</div>
+
+ 
+
         <div className="mb-3 mt-3">
           <label htmlFor="tags">Enter Tags:</label>
 
           <select
-  className="form-select"
-  id="tags"
-  name="tags"
-  value={productData.tags}
-  onChange={handleChange}
->
-  <option value="">Select an option</option>
-  {["new Arrival", "Popular", "oldest Arrival", "Months Trending", "Assured"].map((tagValue, index) => (
-    <option key={index} value={tagValue}>
-      {tagValue}
-    </option>
-  ))}
-</select>
-           
+            className="form-select"
+            id="tags"
+            name="tags"
+            value={productData.tags}
+            onChange={handleChange}
+          >
+            <option value="">Select an option</option>
+            {["new Arrival", "Popular", "oldest Arrival", "Months Trending", "Assured","Others"].map((tagValue, index) => (
+              <option key={index} value={tagValue}>
+                {tagValue}
+              </option>
+            ))}
+          </select>
+
 
         </div>
         <div className="mb-3 mt-3">

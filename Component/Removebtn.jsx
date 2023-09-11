@@ -28,6 +28,6 @@ const Removebtn = ({ id }) => {
 };
 
 Removebtn.propTypes = {
-  id: PropTypes.number.isRequired,  
+  id: PropTypes.any.isRequired,  
 };
 export default Removebtn;
