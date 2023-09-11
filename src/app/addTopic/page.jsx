@@ -49,11 +49,11 @@ const AddTopic = () => {
     e.preventDefault();
 
 
-    const apiPort = process.env.NEXT_PUBLIC_API_PORT || 3000;
-    const apiUrl = `http://localhost:${apiPort}/api/topics`;
+    // const apiPort = process.env.NEXT_PUBLIC_API_PORT || 3000;
+    // const apiUrl = `http://localhost:${apiPort}/api/topics`;
 
     try {
-      const res = await fetch(apiUrl, {
+      const res = await fetch("/api/topics", {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
 

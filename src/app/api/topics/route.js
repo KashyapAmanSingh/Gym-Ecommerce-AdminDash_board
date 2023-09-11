@@ -12,7 +12,7 @@ export async function POST(request) {
     discount,
     offers,
     category,
-    subcategory,
+      subcategory,
     brand,
     seller,
     size,

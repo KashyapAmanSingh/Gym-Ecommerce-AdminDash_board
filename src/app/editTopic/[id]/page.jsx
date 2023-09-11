@@ -10,10 +10,10 @@ import EditTopicForm from '../../../../Component/EditTopicForm';
 
 const getTopicById = async (id) => {
   try {
-    const apiPort = process.env.NEXT_PUBLIC_API_PORT || 3000;
-    const apiUrl = `http://localhost:${apiPort}/api/topics/${id}`; 
+    // const apiPort = process.env.NEXT_PUBLIC_API_PORT || 3000;
+    // const apiUrl = `http://localhost:${apiPort}/api/topics/${id}`; 
 
-    const res = await fetch(apiUrl, {
+    const res = await fetch(`/api/topics/${id}`, {
       cache: 'no-store',
     });
 

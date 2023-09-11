@@ -1,3 +1,4 @@
+
 "use client"
 import React, { useEffect, useState } from 'react';
 import Removebtn from './Removebtn';
@@ -7,9 +8,9 @@ import   { Loader1 } from './Progress';
 
 const getTopics = async () => {
   try {
-    const apiPort = process.env.NEXT_PUBLIC_API_PORT || 3000;  
-    const apiUrl = `http://localhost:${apiPort}/api/topics`;
-    const res = await fetch(apiUrl, {
+    // const apiPort = process.env.NEXT_PUBLIC_API_PORT || 3000;  
+    // const apiUrl = `http://localhost:${apiPort}/api/topics`;
+    const res = await fetch( "/api/topics", {
       cache: "no-store",
     });
     if (!res.ok) {
@@ -78,3 +79,5 @@ export default function TopicList() {
     </>
   );
 }
+
+ 
