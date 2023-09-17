@@ -1,6 +1,4 @@
-
 import mongoose from 'mongoose';
-
 async function connectMongoDB() {
   try {
     await mongoose.connect(process.env.MONGODB_URL,{
@@ -9,11 +7,9 @@ async function connectMongoDB() {
     });
     console.log('Connected to MongoDB');
     } 
-
     catch (error) {
     console.error('Error connecting to MongoDB:', error);
   }
-
 }
 
 
