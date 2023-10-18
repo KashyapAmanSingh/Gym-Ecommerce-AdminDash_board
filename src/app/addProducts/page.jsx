@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import ImageUpload from '../../../Component/Cloudnary';
 import { NextResponse } from 'next/server';
 
-const AddTopic = () => {
+const AddProduct = () => {
   const [OptimisedImageUrl, setOptimisedImageUrl] = useState([]);
   const [productData, setProductData] = useState({
     title: '',
@@ -25,7 +25,12 @@ const AddTopic = () => {
     manufacturingInfo: '',
   });
 
-
+  // const fields = [
+  //   'Title', 'Description', 'Price', 'Stock', 'Discount', 'Offers',
+  //   'Category', 'Sub_Category', 'Brand Name', 'Seller Name', 'Size',
+  //   'Model Name/Number', 'Rating', 'Featured Product', 'Tags',
+  //   'Legal Disclaimer', 'Manufacturing Info'
+  // ];
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -54,7 +59,7 @@ const AddTopic = () => {
     // const apiUrl = `http://localhost:${apiPort}/api/topics`;
 
     try {
-      const res = await fetch("/api/topics", {
+      const res = await fetch("/api/products", {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
 
@@ -71,11 +76,11 @@ const AddTopic = () => {
 
         window.location.href = '/';
       } else {
-        throw new Error("Sorry, we failed to create Topics");
+        throw new Error("Sorry, we failed to create Product");
       }
     } catch (error) {
       console.error(error);
-      return NextResponse.error("Failed to create the topic", { status: 500 });
+      return NextResponse.error("Failed to create the Product", { status: 500 });
     }
 
 
@@ -89,11 +94,11 @@ const AddTopic = () => {
         <div className="mb-3 mt-3">
           <label htmlFor="title">Title:</label>
 
-          <input type="text" placeholder='Topic Title' name='title' id='title' value={productData.title} onChange={handleChange} required />
+          <input type="text" placeholder='Product Title' name='title' id='title' value={productData.title} onChange={handleChange} required />
         </div>
         <div className="mb-3 mt-3">
           <label htmlFor="description">Description:</label>
-          <textarea placeholder='Topic Description' className="form-control" rows="5" name='description' id='description' value={productData.description} onChange={handleChange} required ></textarea>
+          <textarea placeholder='Product Description' className="form-control" rows="5" name='description' id='description' value={productData.description} onChange={handleChange} required ></textarea>
 
 
         </div>
@@ -234,11 +239,11 @@ const AddTopic = () => {
 
 
 
-        <button type="submit" className='btn btn-info mt-1'>Add topics</button>
+        <button type="submit" className='btn btn-info mt-1'>Add Products</button>
       </form>
       <ImageUpload setOptimisedImageUrl={setOptimisedImageUrl} OptimisedImageUrl={OptimisedImageUrl} />
     </div>
   );
 }
 
-export default AddTopic;
+export default AddProduct;

@@ -1,6 +1,7 @@
 import connectMongoDB from "../../../../../libs/mongodb";
-import Topic from "../../../../../models/topic";
+
 import { NextResponse } from "next/server";
+import Product from "../../../../../models/product";
  
 export async function PUT(request, { params }) {
   const { id } = params;
@@ -22,7 +23,7 @@ export async function PUT(request, { params }) {
     manufacturingInfo,
     dateAdded } = await request.json();
   await connectMongoDB();
-  await Topic.findByIdAndUpdate(id, {
+  await Product.findByIdAndUpdate(id, {
     title,
     description,  
    price,
@@ -49,6 +50,6 @@ export async function PUT(request, { params }) {
 export async function GET(request, { params }) {
   const { id } = params;
   await connectMongoDB();
-  const topic = await Topic.findOne({ _id: id });
-  return NextResponse.json({ topic }, { status: 200 });
+  const product = await Product.findOne({ _id: id });
+  return NextResponse.json({ product }, { status: 200 });
 }
