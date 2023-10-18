@@ -1,6 +1,7 @@
 import connectMongoDB from "../../../../libs/mongodb";
-import Topic from "../../../../models/topic";
+ 
 import { NextResponse } from "next/server";
+import Product from "../../../../models/product";
   
 export async function POST(request) {
 
@@ -28,7 +29,7 @@ export async function POST(request) {
   await connectMongoDB();
 
   try {
-     await Topic.create({
+     await Product.create({
       title,
       description,
       price,
@@ -50,23 +51,23 @@ export async function POST(request) {
       dateAdded,
     });
 
-     return NextResponse.json({ message: "Topic Created" }, { status: 201 });
+     return NextResponse.json({ message: "Product Created" }, { status: 201 });
   } catch (error) {
      console.error(error);
-    return NextResponse.error("Failed to create the topic", { status: 500 });
+    return NextResponse.error("Failed to create the Product", { status: 500 });
   }
 }
 export async function GET() {
 
   await connectMongoDB();
-  const topics = await Topic.find();
-  return NextResponse.json({ topics }, { status: 201 });
+  const products = await Product.find();
+  return NextResponse.json({ products  }, { status: 201 });
 }
 
 export async function DELETE(request) {
 
   const id = request.nextUrl.searchParams.get("id");
   await connectMongoDB();
-  await Topic.findByIdAndDelete(id);
-  return NextResponse.json({ message: "Topic deleted" }, { status: 200 });
+  await Product.findByIdAndDelete(id);
+  return NextResponse.json({ message: "Product deleted" }, { status: 200 });
 }

@@ -70,14 +70,5 @@ export async function GET() {
   }
 }
 
-console.log(
-  "___________________________________________________________________________________________________________________________________________________"
-);
-
-// // const AdminOrder = mongoose.model("adminorders");
-
-// //    const adminOrdersFromCollection = await mongoose.connection.collection("adminorders").find({})
-// // const AdminOrder = mongoose.model('AdminOrder');
-
-// const AdminOrder = await AdminOrder.find({});
-// // const AdminOrder = mongoose.model('adminorders');
+ 
+ 
