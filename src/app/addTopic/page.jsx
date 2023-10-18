@@ -13,20 +13,20 @@ const AddTopic = () => {
     discount: 0,
     offers: '',
     category: '',
-    subcategory:'',
+    subcategory: '',
     brand: '',
     seller: '',
     size: 0,
     model: '',
     ratings: 0,
-    is_featured: false, 
+    is_featured: false,
     tags: 'new Arrival',
     legalDisclaimer: '',
     manufacturingInfo: '',
   });
 
- 
-  
+
+
   const handleChange = (e) => {
     const { name, value } = e.target;
 
@@ -36,9 +36,10 @@ const AddTopic = () => {
 
     if (name === 'category' && value === '') {
       setProductData({ ...productData, [name]: 'Supplements' });
-    } 
+    }
     if (name === 'is_featured') {
-      setProductData({ ...productData,  [name]: !productData.is_featured  }); }
+      setProductData({ ...productData, [name]: !productData.is_featured });
+    }
     else {
       setProductData({ ...productData, [name]: value });
     }
@@ -59,7 +60,7 @@ const AddTopic = () => {
 
         body: JSON.stringify({
           ...productData,
-        
+
           images: OptimisedImageUrl,
           dateAdded: new Date(),
         }),
@@ -96,7 +97,7 @@ const AddTopic = () => {
 
 
         </div>
-  
+
         <div className="mb-3 mt-3">
           <label htmlFor="Price"> Enter Price:</label>
 
@@ -136,7 +137,7 @@ const AddTopic = () => {
             required
           >
             <option value="">Select Category</option>
-            {["Supplements", "Equipment", "Footwear", "Nutrition","Others"].map((tagValue, index) => (
+            {["Supplements", "Equipment", "Footwear", "Nutrition", "Others"].map((tagValue, index) => (
               <option key={index} value={tagValue}>
                 {tagValue}
               </option>
@@ -144,7 +145,7 @@ const AddTopic = () => {
           </select>
 
 
-          
+
         </div>
         <div className="mb-3 mt-3">
           <label htmlFor="subcategory">Enter Sub_Category:</label>
@@ -184,19 +185,19 @@ const AddTopic = () => {
 
 
         <div className="mb-3 mt-3">
-        <div className="form-check">
-  <input
-    className="form-check-input"
-    type="checkbox"
-    id="is_featured_checkbox"
-    name="is_featured"
-    onChange={handleChange}
-  />
-  <label className="form-check-label" htmlFor="is_featured_checkbox">Featured Product</label>
-</div>
-</div>
+          <div className="form-check">
+            <input
+              className="form-check-input"
+              type="checkbox"
+              id="is_featured_checkbox"
+              name="is_featured"
+              onChange={handleChange}
+            />
+            <label className="form-check-label" htmlFor="is_featured_checkbox">Featured Product</label>
+          </div>
+        </div>
 
- 
+
 
         <div className="mb-3 mt-3">
           <label htmlFor="tags">Enter Tags:</label>
@@ -209,7 +210,7 @@ const AddTopic = () => {
             onChange={handleChange}
           >
             <option value="">Select an option</option>
-            {["new Arrival", "Popular", "oldest Arrival", "Months Trending", "Assured","Others"].map((tagValue, index) => (
+            {["new Arrival", "Popular", "oldest Arrival", "Months Trending", "Assured", "Others"].map((tagValue, index) => (
               <option key={index} value={tagValue}>
                 {tagValue}
               </option>
