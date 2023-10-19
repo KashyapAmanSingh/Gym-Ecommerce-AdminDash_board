@@ -9,10 +9,7 @@ async function renameCollection() {
     console.log("Connected to MongoDB");
 
     const db = mongoose.connection.db;
-    console.log(
-      db,
-      "db db db !!!!! db db ~~~~~~~~~~~~~~~~~~ db db db db db dbd dbd dbd dbd dbd dbd"
-    );
+   
     const oldCollectionName = "TopicCollection";
     const newCollectionName = "ProductCollection";
 
