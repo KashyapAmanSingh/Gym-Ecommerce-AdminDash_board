@@ -59,7 +59,15 @@ export default function RootLayout({ children }) {
               </ul>
             </div>
             <div className="col-sm-10 offset-sm-2 bg-dark  pt-5">
-              <div className="mb-5 mt-0">{children}</div>
+              <div className="mb-5 mt-0">
+                
+              {/* <AppContextProvider > */}
+
+                {children}
+                {/* </AppContextProvider> */}
+ 
+                
+                </div>
               {/* <ProductList/> */}
             </div>
           </div>
