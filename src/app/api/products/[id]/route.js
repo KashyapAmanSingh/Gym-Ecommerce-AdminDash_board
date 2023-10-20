@@ -2,7 +2,7 @@ import connectMongoDB from "../../../../../libs/mongodb";
 
 import { NextResponse } from "next/server";
 import Product from "../../../../../models/product";
- 
+  
 export async function PUT(request, { params }) {
   const { id } = params;
   const {

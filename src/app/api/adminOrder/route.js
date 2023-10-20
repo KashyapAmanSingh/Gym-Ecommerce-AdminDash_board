@@ -9,7 +9,7 @@ export async function GET() {
     await connectMongoDB();
 
  
-    const adminOrdersWithDetails = await mongoose.connection
+    const adminOrder = await mongoose.connection
       .collection("adminorders")
       .aggregate([
         {
@@ -49,12 +49,12 @@ export async function GET() {
 
     console.log(
       "Admin Orders with Details~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~:",
-      adminOrdersWithDetails
+      adminOrder
     );
 
     return NextResponse.json({
       message: "Fetched successfully",
-      adminOrders: adminOrdersWithDetails,
+      adminOrders: adminOrder,
     });
   } catch (error) {
     console.error("Error fetching admin orders:", error);
