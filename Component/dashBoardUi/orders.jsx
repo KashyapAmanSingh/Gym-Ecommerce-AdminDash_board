@@ -1,13 +1,12 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, {  useEffect, useState } from "react";
 import emailjs from "@emailjs/browser";
 
-emailjs.send;
+// emailjs.send;
 const Orders = () => {
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
-
-  // const sendEmail = async () => {
+   // const sendEmail = async () => {
   //   try {
   //     const templateParams = {
   //       to_name: "Recipient Name",
@@ -83,33 +82,42 @@ const Orders = () => {
     fetchData();
   }, []);
 
- 
+
   const dayRevenueCollection = {};
-  
   orders?.adminOrders?.map((item, ind) => {
     const date = item.userOrderPaymentInfoDetails[0].orderDate.slice(0, item.userOrderPaymentInfoDetails[0].orderDate.indexOf("T"));
     const revenue = Math.trunc(item.userOrderPaymentInfoDetails[0].amount_total);
 
-  
- 
+    console.log(item?.userOrderedProductDetails[0]?.products.length,"--------------------------------")
+    const  count=item?.userOrderedProductDetails[0]?.products.length;
     if (dayRevenueCollection[date]) {
-      dayRevenueCollection[date] += revenue;  
+     
+    dayRevenueCollection[date].revenue += revenue;
+    dayRevenueCollection[date].count += count;
     } else {
-      dayRevenueCollection[date] = revenue;  
+      dayRevenueCollection[date] = {
+        date,
+        revenue,
+        count: count,
+      };
     }
- ;
-  
-    console.log(
-      ind,
-      "Final Payment Status:",
-      date,
-      revenue
-    );
-  });
-  
- 
+    
+    const dayRevenueArray = Object.entries(dayRevenueCollection).map(([date, data]) => {
+      const { revenue, count } = data;
+      return {
+        date,
+        revenue,
+      count,
+      };
+    });
+    
 
-  console.log()
+    sessionStorage.setItem('dayRevenueArray', JSON.stringify(dayRevenueArray));
+    console.log("✨ ✨ ✨ ✨ ✨ ✨ ✨ ✨  ======================>>>>>>>>>>>>>dayRevenueArray dayRevenueArray ", dayRevenueArray )
+
+  });
+  // console.log("😘😘😘😘😘😘😘😘😘😘😘😘 ======================>>>>>>>>>>>>>dayRevenueCollection dayRevenueCollection", dayRevenueCollection)
+
   return (
     <>
       <div>
@@ -156,7 +164,7 @@ const Orders = () => {
                       </table>
                     </td>
                     <td className="text-center align-middle ">
-                      ₹{item.userOrderPaymentInfoDetails[0].amount_total}
+                      ₹{Math.trunc(item.userOrderPaymentInfoDetails[0].amount_total)}
                     </td>
                     {/* <td><button className="btn btn-danger align-middle">Pending</button></td> */}
                     <td className="small fw-light text-center align-middle">
@@ -182,7 +190,6 @@ const Orders = () => {
                         )}
                       >
                         Send
-
                       </button>
                     </td>
                   </tr>
@@ -192,6 +199,7 @@ const Orders = () => {
           </div>
         </div>
       </div>
+     
     </>
   );
 };
