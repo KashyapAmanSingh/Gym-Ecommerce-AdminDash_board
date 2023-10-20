@@ -83,13 +83,39 @@ const Orders = () => {
     fetchData();
   }, []);
 
+ 
+  const dayRevenueCollection = {};
+  
+  orders?.adminOrders?.map((item, ind) => {
+    const date = item.userOrderPaymentInfoDetails[0].orderDate.slice(0, item.userOrderPaymentInfoDetails[0].orderDate.indexOf("T"));
+    const revenue = Math.trunc(item.userOrderPaymentInfoDetails[0].amount_total);
 
+  
+ 
+    if (dayRevenueCollection[date]) {
+      dayRevenueCollection[date] += revenue;  
+    } else {
+      dayRevenueCollection[date] = revenue;  
+    }
+ ;
+  
+    console.log(
+      ind,
+      "Final Payment Status:",
+      date,
+      revenue
+    );
+  });
+  
+ 
+
+  console.log()
   return (
     <>
       <div>
         <div className="container-fluid mt-3">
           <div className="table-responsive-lg">
-          {/* table-dark */}
+            {/* table-dark */}
             <table className="table table-hover table-dark table-bordered table-striped">
               <thead>
                 <tr>
@@ -148,7 +174,7 @@ const Orders = () => {
                     <td className="text-center align-middle">
                       <button
                         className="btn btn-warning"
-                        onClick={()=>handlesendUrlByEmail(
+                        onClick={() => handlesendUrlByEmail(
                           item.usersIdDetails[0].given_name,
                           item.usersIdDetails[0].family_name,
                           item.usersIdDetails[0].email,
@@ -156,7 +182,7 @@ const Orders = () => {
                         )}
                       >
                         Send
-                        
+
                       </button>
                     </td>
                   </tr>
