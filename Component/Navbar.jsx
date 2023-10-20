@@ -7,6 +7,7 @@ const Navbar = () => {
         <Link className='text-danger fs-2  mx-4' href={"/"}>Home</Link>
         <Link className='text-primary  fs-3  mx-4'  href={"/addProducts"}>Add_Product</Link>
 
+ 
     </nav>
   )
 }
