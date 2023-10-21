@@ -1,12 +1,12 @@
 "use client";
-import React, {  useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import emailjs from "@emailjs/browser";
 
 // emailjs.send;
 const Orders = () => {
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
-   // const sendEmail = async () => {
+  // const sendEmail = async () => {
   //   try {
   //     const templateParams = {
   //       to_name: "Recipient Name",
@@ -83,41 +83,73 @@ const Orders = () => {
   }, []);
 
 
-  const dayRevenueCollection = {};
-  orders?.adminOrders?.map((item, ind) => {
-    const date = item.userOrderPaymentInfoDetails[0].orderDate.slice(0, item.userOrderPaymentInfoDetails[0].orderDate.indexOf("T"));
-    const revenue = Math.trunc(item.userOrderPaymentInfoDetails[0].amount_total);
 
-    console.log(item?.userOrderedProductDetails[0]?.products.length,"--------------------------------")
-    const  count=item?.userOrderedProductDetails[0]?.products.length;
-    if (dayRevenueCollection[date]) {
-     
-    dayRevenueCollection[date].revenue += revenue;
-    dayRevenueCollection[date].count += count;
-    } else {
-      dayRevenueCollection[date] = {
-        date,
-        revenue,
-        count: count,
-      };
-    }
-    
-    const dayRevenueArray = Object.entries(dayRevenueCollection).map(([date, data]) => {
-      const { revenue, count } = data;
-      return {
-        date,
-        revenue,
-      count,
-      };
-    });
-    
 
-    sessionStorage.setItem('dayRevenueArray', JSON.stringify(dayRevenueArray));
-    console.log("✨ ✨ ✨ ✨ ✨ ✨ ✨ ✨  ======================>>>>>>>>>>>>>dayRevenueArray dayRevenueArray ", dayRevenueArray )
+  //   const lastFiveTransactions = orders?.adminOrders?.slice(-5).reverse().map((item) => {
+  //     const transaction = {}; // Initialize 'transaction' object for each item
 
+  //     // Assign properties to 'transaction' object
+  //     transaction.id = item.userOrderPaymentInfoDetails[0].transactionId;
+  //     transaction.paidAmount = item.userOrderPaymentInfoDetails[0].amount_total;
+
+  //     return transaction; // Return 'transaction' for each item
+  // });
+
+  // 'lastFiveTransactions' will now be an array of objects, with each object representing a transaction
+
+
+
+  const lastFiveTransactions = orders?.adminOrders?.slice(-9).reverse().map((item) => {
+    const transaction = {}; // Initialize 'transaction' object for each item
+
+    const transactionId = item.userOrderPaymentInfoDetails[0].transactionId;
+    const paidAmount = Math.trunc(item.userOrderPaymentInfoDetails[0].amount_total);
+const CustomerName=  item.usersIdDetails[0].given_name;
+    transaction.id = transactionId;
+    transaction.paidAmount = paidAmount;
+    transaction.CustomerName = CustomerName;
+    return transaction; // Return 'transaction' object for each item
+});
+ 
+    //  console.log("✨ ✨ ✨   ===============✨lastFiveTransactions✨=======>>>>>>>>>✨lastFiveTransactions✨>>>>✨lastFiveTransactions    lastFiveTransactions✨", lastFiveTransactions)
+
+ 
+  // console.log("😘😘😘  ======================>>>>>>>>>>>>>transaction  transaction transaction transaction transaction",transaction)
+
+ 
+  const dayRevenueCollection = {}; // Initialize 'dayRevenueCollection' object outside of the map
+
+  const dailyCollection = orders?.adminOrders?.map((item, ind) => {
+      const date = item.userOrderPaymentInfoDetails[0].orderDate.slice(0, item.userOrderPaymentInfoDetails[0].orderDate.indexOf("T"));
+      const revenue = Math.trunc(item.userOrderPaymentInfoDetails[0].amount_total);
+  
+      console.log(item?.userOrderedProductDetails[0]?.products.length, "--------------------------------")
+      const count = item?.userOrderedProductDetails[0]?.products.length;
+  
+      if (dayRevenueCollection[date]) {
+          dayRevenueCollection[date].revenue += revenue;
+          dayRevenueCollection[date].count += count;
+      } else {
+          dayRevenueCollection[date] = {
+              date,
+              revenue,
+              count: count,
+          };
+      }
+  
+      return dayRevenueCollection[date]; // Return the updated dayRevenueCollection for each item
   });
-  // console.log("😘😘😘😘😘😘😘😘😘😘😘😘 ======================>>>>>>>>>>>>>dayRevenueCollection dayRevenueCollection", dayRevenueCollection)
+  dailyCollection ? sessionStorage.setItem('dailyRevenueArray', JSON.stringify(dailyCollection)) :console.log("dailyCollection is not available. Data not stored in sessionStorage.");
+  lastFiveTransactions ? sessionStorage.setItem('lastFiveTransactions', JSON.stringify(lastFiveTransactions)) : console.log("lastFiveTransactions is not available. Data not stored in sessionStorage.");
+  
+  
+  
+  //console.log("😘😘😘  ======================>>>>>>>>>>>>>dailyCollection dailyCollection  dailyCollection  dailyCollection", dailyCollection)
+  
 
+ 
+  
+  
   return (
     <>
       <div>
@@ -199,7 +231,7 @@ const Orders = () => {
           </div>
         </div>
       </div>
-     
+
     </>
   );
 };
