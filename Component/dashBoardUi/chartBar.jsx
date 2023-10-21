@@ -119,7 +119,7 @@ const ChartBar = () => {
 
             <div className='container-fluid'>
                 <div className='row my-3'>
-                    <div className='col-sm-6'>
+                    <div className='col-sm-12'>
                         <ResponsiveContainer width="100%" height={400}>
 
                             <AreaChart width={1250} height={470} data={arr4}    //arr 2 is also okay but data object of only 3 day so to show we use this
@@ -158,42 +158,11 @@ const ChartBar = () => {
                         </ResponsiveContainer>
 
                     </div>
-                    <div className='col-sm-6'>
 
-                        <ResponsiveContainer width="100%" height={400}>
-
-                            <ComposedChart width={1250} height={400} data={arr4}
-                                margin={{ top: 10, right: 15, left: 0, bottom: 0 }}
-                            >
-                                <CartesianGrid strokeDasharray="0 1" />
-                                <XAxis dataKey="month" />
-                                <YAxis
-                                    yAxisId="revenue"
-                                    domain={[0, 200000]}  // Set the domain to 2 lakhs
-                                    ticks={[0, 40000, 80000, 120000, 160000, 200000]}  // Define custom ticks up to 2 lakhs
-                                    tickFormatter={(value) => `₹${value}`} // Format as currency
-                                />
-
-                                <YAxis
-
-                                    yAxisId="count"
-                                    orientation="right"
-                                    domain={[0, 1000]}  // Adjust the domain based on your data
-                                    ticks={[0, 200, 400, 600, 800, 1000]}
-                                />
-                                <Tooltip />
-                                <Legend />
-                                <Bar dataKey="revenue" fill="#8884d8" yAxisId="revenue" />
-                                <Bar dataKey="count" fill="#82ca9d" yAxisId="count" />
-                                <Line type="monotone" dataKey="count" stroke="#ff7300" yAxisId="count" />
-
-                            </ComposedChart>
-                        </ResponsiveContainer>
-                    </div>
                 </div>
 
 
-                {/* <div className='col-sm-12'>
+                <div className='col-sm-12'>
                     <ResponsiveContainer width="100%" height={400}>
 
                         <ComposedChart width={1250} height={400} data={arr4}
@@ -223,7 +192,7 @@ const ChartBar = () => {
 
                         </ComposedChart>
                     </ResponsiveContainer>
-                </div> */}
+                </div>
 
 
                 <div className='row my-3'>
@@ -283,7 +252,7 @@ const ChartBar = () => {
                 </div>
 
 
-
+ 
             </div>
         </div>
     );
