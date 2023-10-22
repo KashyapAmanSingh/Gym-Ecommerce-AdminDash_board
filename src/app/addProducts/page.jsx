@@ -3,7 +3,8 @@ import AddProducts from '../../../Component/dashBoardUi/AddProducts'
 
 const page = () => {
   return (
-    <div>
+    <div className='addProductForm '>
+      {/* bg-dark */}
       <AddProducts/>
     </div>
   )

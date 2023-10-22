@@ -148,7 +148,20 @@ background-color:rgb(0, 0, 0) !important;
       margin-left:  4rem;
     }
   }
+
+
+  @media (min-width: 992px) {
+    .addProductForm {
+      margin-left: 2rem;
+    }
+  }
   
+  @media (max-width: 991px) {
+    .addProductForm {
+      margin-left:  4rem;
+    }
+  }
+ 
 /* 
 @media (min-width: 769px) and (max-width: 989px) {
   .all_Child {
