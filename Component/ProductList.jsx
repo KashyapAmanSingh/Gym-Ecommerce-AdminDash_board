@@ -38,10 +38,15 @@ export default function ProductList() {
 
   return (
     <>
+                    <h4 className='bg-dark text-center py-5 fw-bold fs-2 text-info'> Total Products in Inventory</h4>
+
       {products.map((value) => (
+        
         <div className='container ' key={value._id}>
-          <div className='row mt-3 ' >
+          
+          <div className='row mt-0 mb-4' >
             <div className='col-sm-1 '>
+              
               {value.images && value.images[0] && (
                 <Image
                   src={value.images[0]}

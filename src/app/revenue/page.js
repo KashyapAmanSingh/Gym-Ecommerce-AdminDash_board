@@ -1,14 +1,13 @@
 import React from 'react';
-import MainPage from '../../../Component/dashBoardUi/mainPage'; // Corrected the component name
-import ChartBar from '../../../Component/dashBoardUi/chartBar';
+ 
+ import MainPage from '../../../Component/dashBoardUi/mainPage';
 
 const Page = () => {
   return (
-    <div>
-      <MainPage />
-      <div className='bg-black text-white mt-5'>
-      <ChartBar/>
-    </div>    </div>
+    <div className='bg-dark vh-100'>
+            <MainPage />
+      
+          </div>
   );
 };
 

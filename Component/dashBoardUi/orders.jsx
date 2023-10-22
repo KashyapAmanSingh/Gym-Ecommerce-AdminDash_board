@@ -1,12 +1,12 @@
 "use client";
-import React, {  useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import emailjs from "@emailjs/browser";
 
 // emailjs.send;
 const Orders = () => {
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
-   // const sendEmail = async () => {
+  // const sendEmail = async () => {
   //   try {
   //     const templateParams = {
   //       to_name: "Recipient Name",
@@ -54,10 +54,9 @@ const Orders = () => {
       );
 
       console.log("Email sent:", response.text);
-      // Do something after sending the email if needed
-    } catch (error) {
+     } catch (error) {
       console.error("Error sending email:", error.text);
-      // Handle errors here
+       
     }
   };
 
@@ -83,56 +82,69 @@ const Orders = () => {
   }, []);
 
 
-  const dayRevenueCollection = {};
-  orders?.adminOrders?.map((item, ind) => {
-    const date = item.userOrderPaymentInfoDetails[0].orderDate.slice(0, item.userOrderPaymentInfoDetails[0].orderDate.indexOf("T"));
-    const revenue = Math.trunc(item.userOrderPaymentInfoDetails[0].amount_total);
+ 
+  const lastFiveTransactions = orders?.adminOrders?.slice(-9).reverse().map((item) => {
+    const transaction = {}; // Initialize 'transaction' object for each item
 
-    console.log(item?.userOrderedProductDetails[0]?.products.length,"--------------------------------")
-    const  count=item?.userOrderedProductDetails[0]?.products.length;
-    if (dayRevenueCollection[date]) {
-     
-    dayRevenueCollection[date].revenue += revenue;
-    dayRevenueCollection[date].count += count;
-    } else {
-      dayRevenueCollection[date] = {
-        date,
-        revenue,
-        count: count,
-      };
-    }
-    
-    const dayRevenueArray = Object.entries(dayRevenueCollection).map(([date, data]) => {
-      const { revenue, count } = data;
-      return {
-        date,
-        revenue,
-      count,
-      };
-    });
-    
+    const transactionId = item.userOrderPaymentInfoDetails[0].transactionId;
+    const paidAmount = Math.trunc(item.userOrderPaymentInfoDetails[0].amount_total);
+const CustomerName=  item.usersIdDetails[0].given_name;
+    transaction.id = transactionId;
+    transaction.paidAmount = paidAmount;
+    transaction.CustomerName = CustomerName;
+    return transaction; // Return 'transaction' object for each item
+});
+ 
+    //  console.log("✨ ✨ ✨   ===============✨lastFiveTransactions✨=======>>>>>>>>>✨lastFiveTransactions✨>>>>✨lastFiveTransactions    lastFiveTransactions✨", lastFiveTransactions)
 
-    sessionStorage.setItem('dayRevenueArray', JSON.stringify(dayRevenueArray));
-    console.log("✨ ✨ ✨ ✨ ✨ ✨ ✨ ✨  ======================>>>>>>>>>>>>>dayRevenueArray dayRevenueArray ", dayRevenueArray )
+ 
+  // console.log("😘😘😘  ======================>>>>>>>>>>>>>transaction  transaction transaction transaction transaction",transaction)
 
+ 
+  const dayRevenueCollection = {}; // Initialize 'dayRevenueCollection' object outside of the map
+
+  const dailyCollection = orders?.adminOrders?.map((item, ind) => {
+      const date = item.userOrderPaymentInfoDetails[0].orderDate.slice(0, item.userOrderPaymentInfoDetails[0].orderDate.indexOf("T"));
+      const revenue = Math.trunc(item.userOrderPaymentInfoDetails[0].amount_total);
+  
+      console.log(item?.userOrderedProductDetails[0]?.products.length, "--------------------------------")
+      const count = item?.userOrderedProductDetails[0]?.products.length;
+  
+      if (dayRevenueCollection[date]) {
+          dayRevenueCollection[date].revenue += revenue;
+          dayRevenueCollection[date].count += count;
+      } else {
+          dayRevenueCollection[date] = {
+              date,
+              revenue,
+              count: count,
+          };
+      }
+  
+      return dayRevenueCollection[date]; // Return the updated dayRevenueCollection for each item
   });
-  // console.log("😘😘😘😘😘😘😘😘😘😘😘😘 ======================>>>>>>>>>>>>>dayRevenueCollection dayRevenueCollection", dayRevenueCollection)
-
+  dailyCollection ? sessionStorage.setItem('dailyRevenueArray', JSON.stringify(dailyCollection)) :console.log("dailyCollection is not available. Data not stored in sessionStorage.");
+  lastFiveTransactions ? sessionStorage.setItem('lastFiveTransactions', JSON.stringify(lastFiveTransactions)) : console.log("lastFiveTransactions is not available. Data not stored in sessionStorage.");
+  
+  
+  
   return (
     <>
       <div>
-        <div className="container-fluid mt-3">
-          <div className="table-responsive-lg">
-            {/* table-dark */}
+        <div className="container-fluid  ">
+          <div className="table-responsive-lg   ">
+ 
             <table className="table table-hover table-dark table-bordered table-striped">
-              <thead>
+            <thead   >
+            {/* border border-3 border-info */}
+            {/* d-none d-sm-none d-md-inline d-lg-inline */}
                 <tr>
-                  <th className="text-center align-middle">DATE</th>
+                  <th className="text-center align-middle d-none d-md-table-cell">DATE</th>
                   <th className="text-center align-middle">Title</th>
                   <th className="text-center align-middle">Quantity</th>
 
-                  <th className="text-center align-middle">TOTAL_AMOUNT </th>
-                  <th className="text-center align-middle">RECIPIENT</th>
+                  <th className="text-center align-middle d-none d-md-table-cell">TOTAL_AMOUNT </th>
+                  <th className="text-center align-middle d-none d-md-table-cell">RECIPIENT</th>
                   <th className="text-center align-middle">FINAL_PAYMENT</th>
                   <th className="text-center align-middle">INVOICE</th>
                 </tr>
@@ -141,7 +153,7 @@ const Orders = () => {
               <tbody>
                 {orders?.adminOrders?.map((item, ind) => (
                   <tr key={ind}>
-                    <td className="align-middle">
+                    <td className="align-middle d-none d-md-table-cell">
                       {item.userOrderPaymentInfoDetails[0].orderDate}
                     </td>
 
@@ -163,11 +175,11 @@ const Orders = () => {
                         </tbody>
                       </table>
                     </td>
-                    <td className="text-center align-middle ">
+                    <td className="text-center align-middle d-none d-md-table-cell ">
                       ₹{Math.trunc(item.userOrderPaymentInfoDetails[0].amount_total)}
                     </td>
                     {/* <td><button className="btn btn-danger align-middle">Pending</button></td> */}
-                    <td className="small fw-light text-center align-middle">
+                    <td className="small fw-light text-center align-middle d-none d-md-table-cell">
                       {`${item.userAddressDetails[0].street}, ${item.userAddressDetails[0].city}, ${item.userAddressDetails[0].pincode}, ${item.userAddressDetails[0].mobileNumber}, ${item.userAddressDetails[0].email}, ${item.userAddressDetails[0].country}, ${item.userAddressDetails[0].state}`}
                     </td>
                     <td className="text-center align-middle">
@@ -199,15 +211,10 @@ const Orders = () => {
           </div>
         </div>
       </div>
-     
+
     </>
   );
 };
 
 export default Orders;
-
-//show orders of the current order titiel may be one image,payment.address,user icon onclick user detail payment sttus and final status
-
-{
-  /* <th className="text-center align-middle">DISCOUNT</th> */
-}
+ 

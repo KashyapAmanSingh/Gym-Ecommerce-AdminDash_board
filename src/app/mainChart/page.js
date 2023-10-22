@@ -1,11 +1,15 @@
 import React from "react";
-import Orders from "../../../Component/dashBoardUi/orders";
-
+import ChartBar from "../../../Component/dashBoardUi/chartBar";
+  
 const page = () => {
   return (
-    <div>
-      <Orders />
-    </div>
+  
+      <div className='bg-dark m-0  '>
+
+      <ChartBar/>
+    </div>    
+ 
+    
   );
 };
 

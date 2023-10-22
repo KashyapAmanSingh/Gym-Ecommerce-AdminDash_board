@@ -133,7 +133,33 @@ a {
   overflow-y: auto;  
 } */
 
+  /* .all_Child {
+background-color:rgb(0, 0, 0) !important;
+}
+   */
+  @media (min-width: 992px) {
+    .all_Child {
+      margin-left: 14rem;
+    }
+  }
+  
+  @media (max-width: 991px) {
+    .all_Child {
+      margin-left:  4rem;
+    }
+  }
+  
+/* 
+@media (min-width: 769px) and (max-width: 989px) {
+  .all_Child {
+    margin-bottom: 5rem;
+  }
+}
 
+@media (min-width: 990px) {
+  .all_Child {
+    margin-bottom: 5rem;
+  }
+} */
 
-
-
+ 

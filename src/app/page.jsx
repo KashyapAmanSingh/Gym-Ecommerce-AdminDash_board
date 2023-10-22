@@ -1,8 +1,7 @@
  import React from 'react'
-import ProductList from '../../Component/ProductList'
+ import Orders from '../../Component/dashBoardUi/orders'
 export default function Home() {
-  return (<>      
-    <ProductList/>
-    </>
-  )
+  return      <Orders/>
+    
+   
 }
