@@ -4,8 +4,10 @@ const MainPage = () => {
   return (
     <div>
       <div className="container ">
- 
-        <div className="row my-5">
+      
+      <h4 className='bg-dark text-center pt-5 fw-bold fs-2 text-info'>Sales and Inventory Overview</h4>
+
+        <div className="row  py-5 px-5">
           <div className='d-flex justify-content-between text-center'>
             <div className="col-sm-4  bg-white">
               <h2 className="card-title mt-2 text-muted">Today&apos;s orders </h2>
@@ -13,7 +15,7 @@ const MainPage = () => {
               <p>250 orders since last day  </p>
 
             </div>
-            <div className="col-sm-4  bg-white mx-3">
+            <div className="col-sm-4  bg-white mx-3 ">
 
               <h2 className="card-title mt-2 text-muted ">  Weekly orders</h2>
               <h6 className='my-2 text-info fw-bold fs-2'> 500</h6>
@@ -30,7 +32,7 @@ const MainPage = () => {
 
         {/* Total Revenue */}
 
-        <div className="row d-flex ">
+        <div className="row d-flex px-5">
           <div className='d-flex justify-content-between text-center '>
             <div className="col-sm-4  bg-white align-middle">
               <h2 className=" card-title mt-2 text-muted">Today&apos;s Revenue</h2>
@@ -55,7 +57,7 @@ const MainPage = () => {
           </div>
         </div>
 
-        <div className="row my-5">
+        <div className="row py-5 px-5 ">
           <div className='d-flex justify-content-between text-center '>
             <div className="col-sm-4   bg-white ">
               <h2 className="card-title mt-2 text-muted ">Total Category </h2>

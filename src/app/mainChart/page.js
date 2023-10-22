@@ -3,11 +3,9 @@ import ChartBar from "../../../Component/dashBoardUi/chartBar";
   
 const page = () => {
   return (
- 
- 
-   
   
-      <div className='bg-dark  mt-5'>
+      <div className='bg-dark m-0  '>
+
       <ChartBar/>
     </div>    
  

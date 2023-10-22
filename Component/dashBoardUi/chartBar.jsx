@@ -1,14 +1,20 @@
 "use client"
 /* eslint-disable no-unused-vars */
-import axios from 'axios';
-import React from 'react'
+ import React, { useEffect, useState } from 'react'
 import { Area, AreaChart, Bar, BarChart, CartesianGrid, ComposedChart, Legend, Line, Pie, PieChart, PolarAngleAxis, PolarGrid, PolarRadiusAxis, Radar, RadarChart, RadialBar, RadialBarChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
- 
+
 const ChartBar = () => {
-
-    const dailyRevenueArray = JSON.parse(sessionStorage.getItem('dailyRevenueArray'))
-    const lastFiveTransactions = JSON.parse(sessionStorage.getItem('lastFiveTransactions'))
-
+    const [dailyRevenueArray, setDailyRevenueArray] = useState([]);
+    const [lastFiveTransactions, setLastFiveTransactions] = useState([]);
+    useEffect(() => {
+        if (typeof window !== 'undefined') {
+          const dailyRevenueArray = JSON.parse(sessionStorage.getItem('dailyRevenueArray'));
+          const lastFiveTransactions = JSON.parse(sessionStorage.getItem('lastFiveTransactions'));
+    
+          setDailyRevenueArray(dailyRevenueArray);
+          setLastFiveTransactions(lastFiveTransactions);
+        }
+      }, []);
     console.log(dailyRevenueArray, "✨ ✨ ✨   ===============✨lastFiveTransactions✨=======>>>>>>>>>✨l ✨>>>>✨   lastFiveTransactions✨", lastFiveTransactions)
 
 
@@ -44,7 +50,7 @@ const ChartBar = () => {
         { month: "November", revenue: 195000, count: 390 },
         { month: "December", revenue: 21000, count: 420 }
     ]
- 
+
 
 
     const categoryData = [
@@ -84,13 +90,16 @@ const ChartBar = () => {
         <div>
 
             <div className='container-fluid'>
-                <div className='row my-3'>
-                    <div className='col-sm-12'>
-                    <h4 className='fw-bold text-center text-info mt-4'>Daily Sale Status</h4>
+
+                <div className='row '>
+                <h4 className='bg-dark text-center my-5 fw-bold fs-2 text-info'>Sales Performance Analysis Dashboard</h4>
+
+               
+                    <div className='col-sm-12 mb-4'>
 
                         <ResponsiveContainer width="100%" height={400}>
 
-                            <AreaChart width={1450} height={470} data={arr3 }    //arr 2 is also okay but data object of only 3 day so to show we use this
+                            <AreaChart width={1450} height={470} data={arr3}    //arr 2 is also okay but data object of only 3 day so to show we use this
                                 margin={{ top: 10, right: -5, left: 0, bottom: 0 }}>
                                 <defs>
                                     <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
@@ -117,7 +126,7 @@ const ChartBar = () => {
                                     domain={[0, 20]}  // Adjust the domain based on your data
                                     ticks={[0, 5, 10, 15, 20]}
                                 />
-<CartesianGrid strokeDasharray="10 10" stroke="purple" />
+                                <CartesianGrid strokeDasharray="10 10" stroke="purple" />
 
                                 <Tooltip />
                                 <Area type="monotone" dataKey="revenue" stroke="#82ca9d" fillOpacity={1} fill="url(#colorPv)" yAxisId="revenue" />
@@ -132,13 +141,13 @@ const ChartBar = () => {
 
 
                 <div className='col-sm-12'>
-                <h4 className='fw-bold text-center text-info mt-5 mb-1'>Monthly Sale Status</h4>
+                    <h4 className='fw-bold text-center text-info   my-5'>Monthly Sales Overview: Unlocking Profit Potential</h4>
                     <ResponsiveContainer width="100%" height={400}>
 
                         <ComposedChart width={1250} height={400} data={arr4}
                             margin={{ top: 10, right: 15, left: 0, bottom: 0 }}
                         >
-                          <CartesianGrid strokeDasharray="5 5" stroke="green" />
+                            <CartesianGrid strokeDasharray="5 5" stroke="green" />
 
                             <XAxis dataKey="month" />
                             <YAxis
@@ -169,7 +178,7 @@ const ChartBar = () => {
                 <div className='row my-3'>
 
                     <div className='col-sm-6   '>
-                        <h4 className='fw-bold text-center text-info my-3'> Category Status</h4>
+                        <h4 className='fw-bold text-center text-info my-3'> Product Categories Overview</h4>
                         <ResponsiveContainer width="100%" height={410}>
                             <RadarChart
                                 cx={290}
@@ -200,7 +209,7 @@ const ChartBar = () => {
 
 
                     <div className='col-sm-6    '>
-                        <h4 className='fw-bold my-3 text-center text-info'> Recent Transaction</h4>
+                        <h4 className='fw-bold my-3 text-center text-info'>Recent Transactions Overview</h4>
                         <table className='table table-borderless table-dark'>
                             <thead className='border-bottom  border-secondary text-center m-0 p-0'>
                                 <tr>
@@ -223,7 +232,7 @@ const ChartBar = () => {
                 </div>
 
 
- 
+
             </div>
         </div>
     );
