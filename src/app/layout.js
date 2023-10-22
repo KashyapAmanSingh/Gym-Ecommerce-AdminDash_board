@@ -4,9 +4,9 @@ import { Inter } from "next/font/google";
 import "bootstrap/dist/css/bootstrap.min.css";
 // import Navbar from "../../Component/Navbar";
 import PropTypes from "prop-types";
-import Link from "next/link";
-import { FcHome, FcAddDatabase, FcCancel, FcPieChart } from "react-icons/fc";
-const inter = Inter({ subsets: ["latin"] });
+import Nvbrr from "../../Component/Nvbrr";
+  
+ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
   title: "Create Next App",
@@ -18,60 +18,13 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={inter.className}>
         {/* <Navbar /> */}
-        <div className="container-fluid  ">
-          {/* <h3 className="text-warning text-center fw-bolder   bg-warning fixed-top">This is Advanced Admin Dasboard</h3> */}
 
-          <div className="row  ">
-            <div className="col-sm-2    bg-black  position-fixed vh-100">
-              <ul className="nav flex-column">
-                <li className="nav-item ">
-                  <Link
-                    className="text-warning fw-bolder nav-link fs-2 mt-3 mx-1"
-                    href={"/"}
-                  >
-                    <FcHome /> Home
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link
-                    className="text-warning fw-bold  nav-link fs-3 mx-1"
-                    href={"/addProducts"}
-                  >
-                    <FcAddDatabase size={31} /> Add_Product
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link
-                    className="text-warning fw-bold d-flex  align-items-center  nav-link fs-2  mx-1 "
-                    href={"/mainChart"}
-                  >
-                    <FcPieChart size={35} /> Statics
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link 
-                    className=" nav-link disabled  d-flex  align-items-center text-warning   fs-3  mx-1"
-                    href="#"
-                  >
-                    <FcCancel size={35} /> Disabled
-                  </Link>
-                </li>
-              </ul>
-            </div>
-            <div className="col-sm-10 offset-sm-2 bg-dark  pt-5">
-              <div className="mb-5 mt-0">
-                
-              {/* <AppContextProvider > */}
-
-                {children}
-                {/* </AppContextProvider> */}
+      <div className=" ">
+        <Nvbrr />
  
-                
-                </div>
-              {/* <ProductList/> */}
-            </div>
-          </div>
         </div>
+        <div className="all_Child">{children}</div>
+  
       </body>
     </html>
   );

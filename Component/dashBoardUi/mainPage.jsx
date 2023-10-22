@@ -3,7 +3,7 @@ import React from 'react'
 const MainPage = () => {
   return (
     <div>
-      <div className="container mt-5">
+      <div className="container ">
  
         <div className="row my-5">
           <div className='d-flex justify-content-between text-center'>
@@ -56,20 +56,20 @@ const MainPage = () => {
         </div>
 
         <div className="row my-5">
-          <div className='d-flex justify-content-between text-center'>
-            <div className="col-sm-4   bg-white">
-              <h2 className="card-title mt-2 text-muted">Total Category </h2>
-              <h6 className='my-2 text-info fw-bold fs-2'>5</h6>
+          <div className='d-flex justify-content-between text-center '>
+            <div className="col-sm-4   bg-white ">
+              <h2 className="card-title mt-2 text-muted ">Total Category </h2>
+              <h6 className='my-2 text-info fw-bold fs-2 mb-5'>5</h6>
 
             </div>
             <div className="col-sm-4 mx-3  bg-white ">
               <h2 className="card-title mt-2 text-muted">Total Products </h2>
-              <h6 className='my-2 text-info fw-bold fs-2'>18</h6>
+              <h6 className='my-2 text-info fw-bold fs-2 mb-5'>18</h6>
 
             </div>
             <div className="col-sm-4   bg-white">
               <h2 className="card-title mt-2 text-muted">Total Customer</h2>
-              <h6 className='my-2 text-info fw-bold fs-2'>05</h6>
+              <h6 className='my-2 text-info fw-bold fs-2 mb-5'>05</h6>
 
             </div>
           </div>

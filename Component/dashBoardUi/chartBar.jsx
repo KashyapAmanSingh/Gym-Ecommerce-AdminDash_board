@@ -3,26 +3,7 @@
 import axios from 'axios';
 import React from 'react'
 import { Area, AreaChart, Bar, BarChart, CartesianGrid, ComposedChart, Legend, Line, Pie, PieChart, PolarAngleAxis, PolarGrid, PolarRadiusAxis, Radar, RadarChart, RadialBar, RadialBarChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
-
-// const fetchData = async () => {
-//     try {
-//                  const res = await fetch("/api/products", {
-//                    cache: "no-store",
-//                  });
-
-//                  if (!res.ok) {
-//                    throw new Error("Failed to fetch Product");
-//                  }
-
-//                          return res.json();
-//                } catch (error) {
-//                  console.error("Error loading Products", error);
-//                  return { products: [] }; // Return an empty array in case of an error
-//                }
-
-
-
-//    };
+ 
 const ChartBar = () => {
 
     const dailyRevenueArray = JSON.parse(sessionStorage.getItem('dailyRevenueArray'))
@@ -63,21 +44,7 @@ const ChartBar = () => {
         { month: "November", revenue: 195000, count: 390 },
         { month: "December", revenue: 21000, count: 420 }
     ]
-
-
-    // useEffect(() => {
-    //     const fetchDataAndLog = async () => {
-    //       try {
-    //         const data = await fetchData();
-    //         console.log("Fetched products: 👉 👉 👉 👉    ===============👉 =======>>>>>>>>>👉 👉 >>>>👉   FETCHED ONE  ✨ ", data.products.slice(-5).reverse());
-    //       } catch (error) {
-    //         console.error("Error in fetchDataAndLog:", error);
-    //       }
-    //     };
-
-    //     fetchDataAndLog();
-    //   }, []);
-
+ 
 
 
     const categoryData = [
@@ -115,14 +82,15 @@ const ChartBar = () => {
 
     return (
         <div>
-            <h1>Chart UI</h1>
 
             <div className='container-fluid'>
                 <div className='row my-3'>
                     <div className='col-sm-12'>
+                    <h4 className='fw-bold text-center text-info mt-4'>Daily Sale Status</h4>
+
                         <ResponsiveContainer width="100%" height={400}>
 
-                            <AreaChart width={1250} height={470} data={arr4}    //arr 2 is also okay but data object of only 3 day so to show we use this
+                            <AreaChart width={1450} height={470} data={arr3 }    //arr 2 is also okay but data object of only 3 day so to show we use this
                                 margin={{ top: 10, right: -5, left: 0, bottom: 0 }}>
                                 <defs>
                                     <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
@@ -134,7 +102,7 @@ const ChartBar = () => {
                                         <stop offset="95%" stopColor="#82ca9d" stopOpacity={0} />
                                     </linearGradient>
                                 </defs>
-                                <XAxis dataKey="month" />
+                                <XAxis dataKey="date" />
                                 <YAxis
                                     yAxisId="revenue"
                                     domain={[0, 200000]}  // Set the domain to 2 lakhs
@@ -149,7 +117,8 @@ const ChartBar = () => {
                                     domain={[0, 20]}  // Adjust the domain based on your data
                                     ticks={[0, 5, 10, 15, 20]}
                                 />
-                                <CartesianGrid strokeDasharray="10 10" stroke="red" />
+<CartesianGrid strokeDasharray="10 10" stroke="purple" />
+
                                 <Tooltip />
                                 <Area type="monotone" dataKey="revenue" stroke="#82ca9d" fillOpacity={1} fill="url(#colorPv)" yAxisId="revenue" />
                                 <Area type="monotone" dataKey="count" stroke="#8884d8" fillOpacity={1} fill="url(#colorUv)" yAxisId="count" />
@@ -163,12 +132,14 @@ const ChartBar = () => {
 
 
                 <div className='col-sm-12'>
+                <h4 className='fw-bold text-center text-info mt-5 mb-1'>Monthly Sale Status</h4>
                     <ResponsiveContainer width="100%" height={400}>
 
                         <ComposedChart width={1250} height={400} data={arr4}
                             margin={{ top: 10, right: 15, left: 0, bottom: 0 }}
                         >
-                            <CartesianGrid strokeDasharray="0 1" />
+                          <CartesianGrid strokeDasharray="5 5" stroke="green" />
+
                             <XAxis dataKey="month" />
                             <YAxis
                                 yAxisId="revenue"

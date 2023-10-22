@@ -54,10 +54,9 @@ const Orders = () => {
       );
 
       console.log("Email sent:", response.text);
-      // Do something after sending the email if needed
-    } catch (error) {
+     } catch (error) {
       console.error("Error sending email:", error.text);
-      // Handle errors here
+       
     }
   };
 
@@ -83,22 +82,7 @@ const Orders = () => {
   }, []);
 
 
-
-
-  //   const lastFiveTransactions = orders?.adminOrders?.slice(-5).reverse().map((item) => {
-  //     const transaction = {}; // Initialize 'transaction' object for each item
-
-  //     // Assign properties to 'transaction' object
-  //     transaction.id = item.userOrderPaymentInfoDetails[0].transactionId;
-  //     transaction.paidAmount = item.userOrderPaymentInfoDetails[0].amount_total;
-
-  //     return transaction; // Return 'transaction' for each item
-  // });
-
-  // 'lastFiveTransactions' will now be an array of objects, with each object representing a transaction
-
-
-
+ 
   const lastFiveTransactions = orders?.adminOrders?.slice(-9).reverse().map((item) => {
     const transaction = {}; // Initialize 'transaction' object for each item
 
@@ -144,27 +128,23 @@ const CustomerName=  item.usersIdDetails[0].given_name;
   
   
   
-  //console.log("😘😘😘  ======================>>>>>>>>>>>>>dailyCollection dailyCollection  dailyCollection  dailyCollection", dailyCollection)
-  
-
- 
-  
-  
   return (
     <>
       <div>
-        <div className="container-fluid mt-3">
-          <div className="table-responsive-lg">
-            {/* table-dark */}
+        <div className="container-fluid  ">
+          <div className="table-responsive-lg   ">
+ 
             <table className="table table-hover table-dark table-bordered table-striped">
-              <thead>
+            <thead   >
+            {/* border border-3 border-info */}
+            {/* d-none d-sm-none d-md-inline d-lg-inline */}
                 <tr>
-                  <th className="text-center align-middle">DATE</th>
+                  <th className="text-center align-middle d-none d-md-table-cell">DATE</th>
                   <th className="text-center align-middle">Title</th>
                   <th className="text-center align-middle">Quantity</th>
 
-                  <th className="text-center align-middle">TOTAL_AMOUNT </th>
-                  <th className="text-center align-middle">RECIPIENT</th>
+                  <th className="text-center align-middle d-none d-md-table-cell">TOTAL_AMOUNT </th>
+                  <th className="text-center align-middle d-none d-md-table-cell">RECIPIENT</th>
                   <th className="text-center align-middle">FINAL_PAYMENT</th>
                   <th className="text-center align-middle">INVOICE</th>
                 </tr>
@@ -173,7 +153,7 @@ const CustomerName=  item.usersIdDetails[0].given_name;
               <tbody>
                 {orders?.adminOrders?.map((item, ind) => (
                   <tr key={ind}>
-                    <td className="align-middle">
+                    <td className="align-middle d-none d-md-table-cell">
                       {item.userOrderPaymentInfoDetails[0].orderDate}
                     </td>
 
@@ -195,11 +175,11 @@ const CustomerName=  item.usersIdDetails[0].given_name;
                         </tbody>
                       </table>
                     </td>
-                    <td className="text-center align-middle ">
+                    <td className="text-center align-middle d-none d-md-table-cell ">
                       ₹{Math.trunc(item.userOrderPaymentInfoDetails[0].amount_total)}
                     </td>
                     {/* <td><button className="btn btn-danger align-middle">Pending</button></td> */}
-                    <td className="small fw-light text-center align-middle">
+                    <td className="small fw-light text-center align-middle d-none d-md-table-cell">
                       {`${item.userAddressDetails[0].street}, ${item.userAddressDetails[0].city}, ${item.userAddressDetails[0].pincode}, ${item.userAddressDetails[0].mobileNumber}, ${item.userAddressDetails[0].email}, ${item.userAddressDetails[0].country}, ${item.userAddressDetails[0].state}`}
                     </td>
                     <td className="text-center align-middle">
@@ -237,9 +217,4 @@ const CustomerName=  item.usersIdDetails[0].given_name;
 };
 
 export default Orders;
-
-//show orders of the current order titiel may be one image,payment.address,user icon onclick user detail payment sttus and final status
-
-{
-  /* <th className="text-center align-middle">DISCOUNT</th> */
-}
+ 
