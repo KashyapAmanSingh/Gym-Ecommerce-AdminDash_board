@@ -62,6 +62,7 @@ const productSchema = new Schema(
     ratings: {
       type: Number,
       required: false,
+      default:0
     },
     is_featured: {
       type: Boolean,

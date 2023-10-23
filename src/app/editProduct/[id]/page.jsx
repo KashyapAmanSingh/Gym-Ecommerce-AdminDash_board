@@ -38,7 +38,8 @@ const editProducts = async ({ params }) => {
     const { product } = await getProductById(id);
     if (product) {
 
-      return <EditProductForm  Product={product} id={id} />;
+      return <div className='addProductForm '><EditProductForm Product={product} id={id} /></div>;
+
     } else {
       return <div>Error: Product not found for this ID</div>;
     }

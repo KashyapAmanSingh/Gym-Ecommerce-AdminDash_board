@@ -44,7 +44,7 @@ export default function ProductList() {
         
         <div className='container ' key={value._id}>
           
-          <div className='row mt-0 mb-4' >
+          <div className='row mt-0 mb-4 px-5' >
             <div className='col-sm-1 '>
               
               {value.images && value.images[0] && (
@@ -52,7 +52,7 @@ export default function ProductList() {
                   src={value.images[0]}
                   height={60}
                   width={70}
-                  className='rounded-circle'
+                  className=' d-none d-md-none d-sm-none d-lg-inline rounded-circle'
                   alt={`Image for ${value.title}`}
                 />
               )}
