@@ -26,7 +26,7 @@ const AddProducts = () => {
     manufacturingInfo: '',
   });
 
-   const handleChange = (e) => {
+  const handleChange = (e) => {
     const { name, value } = e.target;
 
     if (name === 'tags' && value === '') {
@@ -88,13 +88,10 @@ const AddProducts = () => {
     'seller',
     'size',
     'model',
-    'rating',
-
-    'legalDisclaimer',
-    'manufacturingInfo',
-  ];
-
  
+  ];
+  // 'rating',
+
   return (
     <div>
       <form onSubmit={handleSubmit}>
@@ -117,7 +114,7 @@ const AddProducts = () => {
             ))}
           </div>
 
-          {/* Description */}
+           
           <div className="mb-3 mt-3">
             <label htmlFor="description">Description:</label>
             <textarea
@@ -130,7 +127,8 @@ const AddProducts = () => {
               onChange={handleChange}
               required
             ></textarea>
-          </div>
+          </div>  
+
 
           {/* Enter Category */}
           <div className="mb-3 mt-3">
@@ -187,6 +185,20 @@ const AddProducts = () => {
             </select>
           </div>
 
+
+
+          <div className="mb-3 mt-3">
+            <label htmlFor="legalDisclaimer">LegalDisclaimer:</label>
+
+            <textarea className="form-control" type="text" placeholder='Enter legalDisclaimer' name='legalDisclaimer' id='legalDisclaimer' value={productData.legalDisclaimer} onChange={handleChange} ></textarea>
+
+          </div>
+          <div className="mb-3 mt-3">
+            <label htmlFor="manufacturingInfo">ManufacturingInfo:</label>
+            <textarea className="form-control" type="text" placeholder='Enter manufacturingInfo' name='manufacturingInfo' id='manufacturingInfo' value={productData.manufacturingInfo} onChange={handleChange} ></textarea>
+ 
+          </div>
+ 
           <button type="submit" className="btn btn-info mt-1">Add Products</button>
         </div>
       </form>

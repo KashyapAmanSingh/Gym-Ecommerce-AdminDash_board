@@ -6,30 +6,6 @@ import emailjs from "@emailjs/browser";
 const Orders = () => {
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
-  // const sendEmail = async () => {
-  //   try {
-  //     const templateParams = {
-  //       to_name: "Recipient Name",
-  //       from_name: "Your Name",
-  //       from_email: "arbalaji457@gmail.com",
-  //        to_email: "itsevolution7@gmail.com",
-  //       invoice_link: "https://your-invoice-link.com",
-  //     };
-
-  //     const response = await  emailjs.send(
-  //       "service_3m51kkn",
-  //       "template_ueu00mc",
-  //       templateParams,
-  //       "x6kK401MTrP5n9G7U"
-  //     );
-
-  //     console.log("Email sent___________________________________!!!!!!!!!!!!*****************:", response.text);
-  //     return response; // If you want to return something
-  //   } catch (error) {
-  //     console.error("Error sending email:", error.text);
-  //     throw error; // Throw the error if you want to handle it outside
-  //   }
-  // };
 
   const handlesendUrlByEmail = async (
     given_name,
@@ -54,9 +30,9 @@ const Orders = () => {
       );
 
       console.log("Email sent:", response.text);
-     } catch (error) {
+    } catch (error) {
       console.error("Error sending email:", error.text);
-       
+
     }
   };
 
@@ -82,79 +58,79 @@ const Orders = () => {
   }, []);
 
 
- 
+
   const lastFiveTransactions = orders?.adminOrders?.slice(-9).reverse().map((item) => {
     const transaction = {}; // Initialize 'transaction' object for each item
 
     const transactionId = item.userOrderPaymentInfoDetails[0].transactionId;
     const paidAmount = Math.trunc(item.userOrderPaymentInfoDetails[0].amount_total);
-const CustomerName=  item.usersIdDetails[0].given_name;
+    const CustomerName = item.usersIdDetails[0].given_name;
     transaction.id = transactionId;
     transaction.paidAmount = paidAmount;
     transaction.CustomerName = CustomerName;
     return transaction; // Return 'transaction' object for each item
-});
- 
-    //  console.log("✨ ✨ ✨   ===============✨lastFiveTransactions✨=======>>>>>>>>>✨lastFiveTransactions✨>>>>✨lastFiveTransactions    lastFiveTransactions✨", lastFiveTransactions)
+  });
 
- 
+  //  console.log("✨ ✨ ✨   ===============✨lastFiveTransactions✨=======>>>>>>>>>✨lastFiveTransactions✨>>>>✨lastFiveTransactions    lastFiveTransactions✨", lastFiveTransactions)
+
+
   // console.log("😘😘😘  ======================>>>>>>>>>>>>>transaction  transaction transaction transaction transaction",transaction)
 
- 
+
   const dayRevenueCollection = {}; // Initialize 'dayRevenueCollection' object outside of the map
 
   const dailyCollection = orders?.adminOrders?.map((item, ind) => {
-      const date = item.userOrderPaymentInfoDetails[0].orderDate.slice(0, item.userOrderPaymentInfoDetails[0].orderDate.indexOf("T"));
-      const revenue = Math.trunc(item.userOrderPaymentInfoDetails[0].amount_total);
-  
-      console.log(item?.userOrderedProductDetails[0]?.products.length, "--------------------------------")
-      const count = item?.userOrderedProductDetails[0]?.products.length;
-  
-      if (dayRevenueCollection[date]) {
-          dayRevenueCollection[date].revenue += revenue;
-          dayRevenueCollection[date].count += count;
-      } else {
-          dayRevenueCollection[date] = {
-              date,
-              revenue,
-              count: count,
-          };
-      }
-  
-      return dayRevenueCollection[date]; // Return the updated dayRevenueCollection for each item
+    const date = item.userOrderPaymentInfoDetails[0].orderDate.slice(0, item.userOrderPaymentInfoDetails[0].orderDate.indexOf("T"));
+    const revenue = Math.trunc(item.userOrderPaymentInfoDetails[0].amount_total);
+
+    console.log(item?.userOrderedProductDetails[0]?.products.length, "--------------------------------")
+    const count = item?.userOrderedProductDetails[0]?.products.length;
+
+    if (dayRevenueCollection[date]) {
+      dayRevenueCollection[date].revenue += revenue;
+      dayRevenueCollection[date].count += count;
+    } else {
+      dayRevenueCollection[date] = {
+        date,
+        revenue,
+        count: count,
+      };
+    }
+
+    return dayRevenueCollection[date]; // Return the updated dayRevenueCollection for each item
   });
-  dailyCollection ? sessionStorage.setItem('dailyRevenueArray', JSON.stringify(dailyCollection)) :console.log("dailyCollection is not available. Data not stored in sessionStorage.");
+  dailyCollection ? sessionStorage.setItem('dailyRevenueArray', JSON.stringify(dailyCollection)) : console.log("dailyCollection is not available. Data not stored in sessionStorage.");
   lastFiveTransactions ? sessionStorage.setItem('lastFiveTransactions', JSON.stringify(lastFiveTransactions)) : console.log("lastFiveTransactions is not available. Data not stored in sessionStorage.");
-  
-  
-  
+
+
+
   return (
     <>
       <div>
         <div className="container-fluid  ">
           <div className="table-responsive-lg   ">
- 
-            <table className="table table-hover table-dark table-bordered table-striped">
-            <thead   >
-            {/* border border-3 border-info */}
-            {/* d-none d-sm-none d-md-inline d-lg-inline */}
-                <tr>
-                  <th className="text-center align-middle d-none d-md-table-cell">DATE</th>
-                  <th className="text-center align-middle">Title</th>
-                  <th className="text-center align-middle">Quantity</th>
 
-                  <th className="text-center align-middle d-none d-md-table-cell">TOTAL_AMOUNT </th>
-                  <th className="text-center align-middle d-none d-md-table-cell">RECIPIENT</th>
-                  <th className="text-center align-middle">FINAL_PAYMENT</th>
-                  <th className="text-center align-middle">INVOICE</th>
-                </tr>
+            <table className="table table-hover table-dark table-bordered table-striped">
+              <thead   >
+                {/* border border-3 border-info */}
+                {/* d-none d-sm-none d-md-inline d-lg-inline */}
+                <tr>
+  <th className="text-center align-middle d-none col-md-2 d-md-table-cell">DATE</th>
+  <th className="text-center align-middle col-md-5">Product Title</th>
+  <th className="text-center align-middle col-md-1">Quantity</th>
+  <th className="text-center align-middle d-none d-md-table-cell">TOTAL_AMOUNT</th>
+  <th className="text-center align-middle d-none d-md-table-cell">RECIPIENT</th>
+  <th className="text-center align-middle">FINAL_PAYMENT</th>
+  <th className="text-center align-middle">INVOICE</th>
+</tr>
+
               </thead>
 
               <tbody>
                 {orders?.adminOrders?.map((item, ind) => (
                   <tr key={ind}>
-                    <td className="align-middle d-none d-md-table-cell">
-                      {item.userOrderPaymentInfoDetails[0].orderDate}
+                    <td className="align-middle  d-none text-center d-md-table-cell">
+                      {item.userOrderPaymentInfoDetails[0].orderDate.slice(0, item.userOrderPaymentInfoDetails[0].orderDate.indexOf("T"))}
                     </td>
 
                     <td colSpan="2">
@@ -217,4 +193,3 @@ const CustomerName=  item.usersIdDetails[0].given_name;
 };
 
 export default Orders;
- 
