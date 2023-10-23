@@ -71,12 +71,6 @@ const Orders = () => {
     return transaction; // Return 'transaction' object for each item
   });
 
-  //  console.log("✨ ✨ ✨   ===============✨lastFiveTransactions✨=======>>>>>>>>>✨lastFiveTransactions✨>>>>✨lastFiveTransactions    lastFiveTransactions✨", lastFiveTransactions)
-
-
-  // console.log("😘😘😘  ======================>>>>>>>>>>>>>transaction  transaction transaction transaction transaction",transaction)
-
-
   const dayRevenueCollection = {}; // Initialize 'dayRevenueCollection' object outside of the map
 
   const dailyCollection = orders?.adminOrders?.map((item, ind) => {
@@ -115,14 +109,14 @@ const Orders = () => {
                 {/* border border-3 border-info */}
                 {/* d-none d-sm-none d-md-inline d-lg-inline */}
                 <tr>
-  <th className="text-center align-middle d-none col-md-2 d-md-table-cell">DATE</th>
-  <th className="text-center align-middle col-md-5">Product Title</th>
-  <th className="text-center align-middle col-md-1">Quantity</th>
-  <th className="text-center align-middle d-none d-md-table-cell">TOTAL_AMOUNT</th>
-  <th className="text-center align-middle d-none d-md-table-cell">RECIPIENT</th>
-  <th className="text-center align-middle">FINAL_PAYMENT</th>
-  <th className="text-center align-middle">INVOICE</th>
-</tr>
+                  <th className="text-center align-middle d-none col-md-2 d-md-table-cell">DATE</th>
+                  <th className="text-center align-middle col-md-5">Product Title</th>
+                  <th className="text-center align-middle col-md-1">Quantity</th>
+                  <th className="text-center align-middle d-none d-md-table-cell">TOTAL_AMOUNT</th>
+                  <th className="text-center align-middle d-none d-md-table-cell">RECIPIENT</th>
+                  <th className="text-center align-middle">FINAL_PAYMENT</th>
+                  <th className="text-center align-middle">INVOICE</th>
+                </tr>
 
               </thead>
 

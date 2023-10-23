@@ -1,7 +1,13 @@
  import React from 'react'
- import Orders from '../../Component/dashBoardUi/orders'
+ import { LoginLink, LogoutLink, RegisterLink } from '@kinde-oss/kinde-auth-nextjs/server'
 export default function Home() {
-  return      <Orders/>
-    
-   
+     return (
+    <div>
+    <div className='btn btn-danger' >
+    <LoginLink>Sign in</LoginLink></div>
+    <div className='btn btn-danger' ><RegisterLink>Sign up</RegisterLink></div>
+    <div className='btn btn-danger' > <LogoutLink>Log out</LogoutLink></div>
+    </div>
+  )
+  
 }
