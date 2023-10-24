@@ -1,17 +1,25 @@
 // Import Axios or any other HTTP client library
-import axios from 'axios';
+// import axios from 'axios';
 
-async function Profile() {
-  try {
-    const response = await axios.get('/api/auth');
-    const data = response.data;
+// async function Profile() {
+//   try {
+//     const response = await axios.get('/api/auth');
+//     const data = response.data;
 
-    // You can now use the data in your application
-    console.log(data);
-  } catch (error) {
-    console.error('Error fetching data:', error);
-  }
+//     // You can now use the data in your application
+//     console.log(data);
+//   } catch (error) {
+//     console.error('Error fetching data:', error);
+//   }
+// }
+
+// Profile();
+import React from 'react'
+
+const page = () => {
+  return (
+    <div>page</div>
+  )
 }
 
-// Call the fetchData function to get the user information
-Profile();
+export default page
