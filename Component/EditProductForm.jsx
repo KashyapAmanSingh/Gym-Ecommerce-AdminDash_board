@@ -33,9 +33,6 @@ const EditProductForm = ({ id, Product }) => {
     Product: PropTypes.object.isRequired,
   };
 
-
-
-
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -104,8 +101,6 @@ const EditProductForm = ({ id, Product }) => {
           ></textarea>
         </div>
 
-
-
         <div className="mb-3 mt-3">
           <label htmlFor="Price"> Enter Price:</label>
 
@@ -116,8 +111,6 @@ const EditProductForm = ({ id, Product }) => {
             placeholder="Product Price"
             value={formData.price}
             onChange={handleInputChange} />
-
-
 
         </div>
         <div className="mb-3 mt-3">
@@ -177,9 +170,6 @@ const EditProductForm = ({ id, Product }) => {
               <option value={tagValue} key={ind}>{tagValue}</option>
             ))}
           </select>
-
-
-
 
         </div>
         <div className="mb-3 mt-3">
