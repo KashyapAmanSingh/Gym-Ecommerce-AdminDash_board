@@ -1,26 +1,42 @@
-// Import Axios or any other HTTP client library
-// import axios from 'axios';
+ 
 
-// async function Profile() {
-//   try {
-//     const response = await axios.get('/api/auth');
-//     const data = response.data;
+"use client";
 
-//     // You can now use the data in your application
-//     console.log(data);
-//   } catch (error) {
-//     console.error('Error fetching data:', error);
-//   }
-// }
+import React, { useEffect, useState } from "react";
+import { FcAddressBook, FcBusinessman } from "react-icons/fc";
 
-// Profile();
+export default function Profile() {
+  const [user, setUser] = useState({});
+  const [authStatus, setAuthStatus] = useState(null);
 
-import React from 'react'
+  useEffect(() => {
+    const getKindeSession = async () => {
+      const res = await fetch("/api/kindeSession");
+      const data = await res.json();
 
-const page = () => {
+      setUser(data.user);
+      setAuthStatus(data.authenticated);
+    };
+
+    getKindeSession();
+  }, []);
+
   return (
-    <div>page</div>
-  )
-}
+    <div className="container">
+      <h1 className="text-center text-info fw-bold fs-1 my-5">Admin Profile</h1>
+      <div className="card">
+        <div className="card-body">
+          <h5 className="card-title fs-3 text-center"><FcBusinessman/> Admin Name : {user.given_name}  {user.family_name}
+</h5>
+        
+        </div>
+      </div>
 
-export default page
+      <div className="card mt-3">
+        <div className="card-body">
+          <h5 className="card-title fs-3 text-center"><FcAddressBook/>Admin Email : {user.email}</h5>
+         </div>
+      </div>
+    </div>
+  );
+}

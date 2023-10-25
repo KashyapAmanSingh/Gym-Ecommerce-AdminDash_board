@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { FcAddDatabase, FcHome, FcMoneyTransfer, FcPieChart } from 'react-icons/fc';
+import { FcAddDatabase, FcBusinessman, FcHome, FcMoneyTransfer, FcPieChart } from 'react-icons/fc';
 import { BiLogOut } from 'react-icons/bi';
 
 
@@ -18,6 +18,13 @@ const Nvbrr = () => {
             <div className='d-flex justify-content-center'>
 
             </div>
+            <li className="nav-item">
+
+<Link href="/" className="text-white fw-bolder nav-link fs-2 mt-3 mx-1">
+  <FcBusinessman />
+  <span className="d-none d-sm-none d-md-none d-lg-inline">Profile</span>
+</Link>
+</li>
             <li className="nav-item">
 
               <Link href="/" className="text-white fw-bolder nav-link fs-2 mt-3 mx-1">
