@@ -20,7 +20,7 @@ const Nvbrr = () => {
             </div>
             <li className="nav-item">
 
-<Link href="/" className="text-white fw-bolder nav-link fs-2 mt-3 mx-1">
+<Link href="/profile"  className="text-white fw-bolder nav-link fs-2 mt-3 mx-1">
   <FcBusinessman />
   <span className="d-none d-sm-none d-md-none d-lg-inline">Profile</span>
 </Link>
