@@ -1,35 +1,116 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Gym E-Commerce Shopping - Admin Dashboard
 
-## Getting Started
 
-First, run the development server:
+## Overview
+My Shopping App Admin Dashboard provides a comprehensive view of customer orders. It includes an organized list of ordered items, featuring tables with product details, prices, titles, customer information, and addresses. Recharts are utilized to display profit and loss insights for enhanced analysis.
 
+# Technologies Used
+## Frontend:
+
+React 18.2.0
+Next.js 13.4.19
+Bootstrap 5.3.1
+React Icons 4.11.0
+React Loader Spinner 5.4.5
+Recharts 2.9.0
+
+## Backend:
+Node.js with Express 4.18.2
+MongoDB with Mongoose 7.5.0
+Kinder Auth for Next.js 1.8.23
+Axios 1.5.1 for making HTTP requests
+Cloudinary for image management
+
+## Others:
+EmailJS Browser 3.11.0 for email functionality
+Dotenv 16.3.1 for environment variables
+
+## Live Deployment Link click to view live
+   https://nextjsrgsform-7e5o.vercel.app/
+
+
+Getting Started
+Install Dependencies:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+Run Development Server:
+```bash
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-## Learn More
+# Features
+## Order Details:
 
-To learn more about Next.js, take a look at the following resources:
+View organized lists of ordered items.
+Tables display product details, prices, titles, and customer information.
+Analytics:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Utilize Recharts to visualize profit and loss insights for better analysis.
+Authentication:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Implement secure user authentication with Kinder Auth for Next.js.
+How to Use
+Run the Development Server:
+npm run dev
 
-## Deploy on Vercel
+Note- Use Your Own Envs for the Kinde Authentications etc...
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
-"# Nextjsrgsform" 
+## Access the Dashboard:
+Navigate to the dashboard by opening your web browser and visiting http://localhost:3000, for local machine
+
+Explore Orders:
+Browse through the organized lists of ordered items and analyze profit and loss insights.
+
+Authentication:
+Securely access the dashboard with user authentication through Kinder Auth.
+
+ ## The Ui Section Of the DashBoard:
+
+
+
+
+
+![Screenshot 2023-11-15 172852](https://github.com/KashyapAmanSingh/Nextjsrgsform/assets/119684617/4eb01086-582d-4434-a748-7c2c7b0a9280)
+
+
+
+
+
+
+## Sale Performance
+![Sale_Performance](https://github.com/KashyapAmanSingh/Nextjsrgsform/assets/119684617/36533787-10d1-4729-8ba8-436b2b134d2e)
+
+
+
+## Monthly sales Analysis
+![Screenshot 2023-11-15 172932](https://github.com/KashyapAmanSingh/Nextjsrgsform/assets/119684617/b329f2e1-6430-44fa-832d-fd7865de73dd)
+
+## Category Wise Sales
+![Screenshot 2023-11-15 172953](https://github.com/KashyapAmanSingh/Nextjsrgsform/assets/119684617/5e77df50-885c-4929-b502-4686ff529fa7)
+
+## Product Inventory
+ ![Product_Inventory](https://github.com/KashyapAmanSingh/Nextjsrgsform/assets/119684617/acb13c6b-947c-409a-8931-d14a1eb2b210)
+
+
+## Revenue Section
+![Revenue_Section](https://github.com/KashyapAmanSingh/Nextjsrgsform/assets/119684617/08d30682-d436-4c87-ac67-6fa03dca30d0)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
