@@ -61,14 +61,20 @@ const Nvbrr = () => {
                 <span className="d-none d-sm-none d-md-none d-lg-inline"> Revenue </span>
               </Link>
             </li>
+
+            
+
+
+
+            
             {
               isAuthenticated ? (
 
                 <li className="nav-item ">
                   {isLoading ? <div>Loading...</div> : ""}
 
-                  <BiLogOut size={40} className='ms-4' color="white" /><span className=" d-none d-sm-none d-md-none d-lg-inline ms-0 ">
-                  {isLoading ? <div>Loading...</div> : <LogoutLink className='text-light fw-bold  fs-3'> {isLoading ? <div className='fs-4  fw-medium'>Loading..</div> :"Sign out"}</LogoutLink>}
+                  <span className="ms-0  ">
+                    <LogoutLink className='text-light fw-bold  fs-3'> <BiLogOut size={40} className='ms-4' color="white" />{isLoading ? <div className='fs-4  fw-medium'>Loading..</div> :<div className='d-none   d-sm-none d-md-none d-lg-inline'>Sign Out</div> }</LogoutLink>
 
                   </span>
                 </li>
