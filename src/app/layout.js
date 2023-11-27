@@ -5,8 +5,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 // import Navbar from "../../Component/Navbar";
 import PropTypes from "prop-types";
 import Nvbrr from "../../Component/Nvbrr";
-  
- const inter = Inter({ subsets: ["latin"] });
+
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
   title: "Create Next App",
@@ -19,12 +19,10 @@ export default function RootLayout({ children }) {
       <body className={inter.className}>
         {/* <Navbar /> */}
 
-      <div className=" ">
-        <Nvbrr />
- 
+        <div className=" ">
+          <Nvbrr />
         </div>
         <div className="all_Child">{children}</div>
-  
       </body>
     </html>
   );

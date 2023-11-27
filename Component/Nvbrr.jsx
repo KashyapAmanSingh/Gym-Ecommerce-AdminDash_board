@@ -1,12 +1,17 @@
 
+"use client";
 
 import React from 'react';
 import Link from 'next/link';
 import { FcAddDatabase, FcBusinessman, FcHome, FcMoneyTransfer, FcPieChart } from 'react-icons/fc';
 import { BiLogOut } from 'react-icons/bi';
-
+import { TbLogout } from 'react-icons/tb';
+import { useKindeBrowserClient } from "@kinde-oss/kinde-auth-nextjs";
+import { LoginLink, LogoutLink } from "@kinde-oss/kinde-auth-nextjs/components";
 
 const Nvbrr = () => {
+  const { isAuthenticated, isLoading } = useKindeBrowserClient();
+
   return (
     <div>
 
@@ -20,11 +25,11 @@ const Nvbrr = () => {
             </div>
             <li className="nav-item">
 
-<Link href="/" className="text-white fw-bolder nav-link fs-2 mt-3 mx-1">
-  <FcBusinessman />
-  <span className="d-none d-sm-none d-md-none d-lg-inline">Profile</span>
-</Link>
-</li>
+              <Link href="/" className="text-white fw-bolder nav-link fs-2 mt-3 mx-1">
+                <FcBusinessman />
+                <span className="d-none d-sm-none d-md-none d-lg-inline">Profile</span>
+              </Link>
+            </li>
             <li className="nav-item">
 
               <Link href="/" className="text-white fw-bolder nav-link fs-2 mt-3 mx-1">
@@ -56,16 +61,34 @@ const Nvbrr = () => {
                 <span className="d-none d-sm-none d-md-none d-lg-inline"> Revenue </span>
               </Link>
             </li>
-            <li className="nav-item">
-              <Link href="/login" className="nav-link fw-bold text-white fs-3 mx-1">
-                <BiLogOut size={35} />
-                <span className="d-none d-sm-none d-md-none d-lg-inline"> Log Out </span>
-              </Link>
-            </li>
+            {
+              isAuthenticated ? (
+
+                <li className="nav-item ">
+                  {isLoading ? <div>Loading...</div> : ""}
+
+                  <BiLogOut size={40} className='ms-4' color="white" /><span className=" d-none d-sm-none d-md-none d-lg-inline ms-0 ">
+                  {isLoading ? <div>Loading...</div> : <LogoutLink className='text-light fw-bold  fs-3'> {isLoading ? <div className='fs-4  fw-medium'>Loading..</div> :"Sign out"}</LogoutLink>}
+
+                  </span>
+                </li>
+              ) : (
+
+                <li className="nav-item ">
+                  <TbLogout size={40} className='ms-4' color="white" /><span className="d-none   d-sm-none d-md-none d-lg-inline ms-0  ">
+                    <LoginLink className='text-light fw-bold  fs-3'> {isLoading ? <div className='fs-4  fw-medium'>Loading..</div> :"Sign in"}</LoginLink>
+
+                  </span>
+                </li>
+
+              )
+
+            }
+
           </ul>
         </div>
       </nav>
- 
+
 
     </div>
 

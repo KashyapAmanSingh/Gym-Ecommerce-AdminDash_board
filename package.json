@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@emailjs/browser": "^3.11.0",
-    "@kinde-oss/kinde-auth-nextjs": "^1.8.23",
+    "@kinde-oss/kinde-auth-nextjs": "^2.0.10",
     "axios": "^1.5.1",
     "bootstrap": "^5.3.1",
     "cloudinary": "^1.40.0",

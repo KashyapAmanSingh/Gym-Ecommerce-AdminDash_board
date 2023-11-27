@@ -1,5 +1,5 @@
 import React from 'react'
-import { RegisterLink, LoginLink, LogoutLink } from "@kinde-oss/kinde-auth-nextjs/components";
+import { LoginLink, LogoutLink, RegisterLink } from '@kinde-oss/kinde-auth-nextjs/server'
  
 const page = () => {
   return (
