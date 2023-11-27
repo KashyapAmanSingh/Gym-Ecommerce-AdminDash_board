@@ -3,9 +3,13 @@ import React, { useState } from 'react';
 
 import { NextResponse } from 'next/server';
 import ImageUpload from '../Cloudnary';
-
+import Kindeauth from '@/utlility/Kindeauth';
+import Image from 'next/image';
+import logInFirst from "../../public/logInFirst.jpg"
+import { ThreeCircles } from 'react-loader-spinner';
 const AddProducts = () => {
   const [OptimisedImageUrl, setOptimisedImageUrl] = useState([]);
+
   const [productData, setProductData] = useState({
     title: '',
     description: '',
@@ -25,6 +29,7 @@ const AddProducts = () => {
     legalDisclaimer: '',
     manufacturingInfo: '',
   });
+  const { isAuthenticated, isLoading } = Kindeauth();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -88,18 +93,26 @@ const AddProducts = () => {
     'seller',
     'size',
     'model',
- 
-  ];
-  // 'rating',
 
-  return (
+  ];
+
+
+
+
+
+
+  if (isLoading) return (<div className="d-flex justify-content-center align-items-center vh-100"><ThreeCircles /></div>)
+
+
+
+  return isAuthenticated ? (
     <div>
       <form onSubmit={handleSubmit}>
         <div className="container">
           <div className="row">
             {fieldNames && fieldNames.map((fieldName, ind) => (
               <div key={ind} className="col-md-6 mb-3 mt-3">
-                <label htmlFor={fieldName}>{fieldName}:</label>
+                <label htmlFor={fieldName} className='text-uppercase '>{fieldName}:</label>
                 <input
                   type="text"
                   placeholder={`Enter ${fieldName}`}
@@ -114,7 +127,7 @@ const AddProducts = () => {
             ))}
           </div>
 
-           
+
           <div className="mb-3 mt-3">
             <label htmlFor="description">Description:</label>
             <textarea
@@ -127,7 +140,7 @@ const AddProducts = () => {
               onChange={handleChange}
               required
             ></textarea>
-          </div>  
+          </div>
 
 
           {/* Enter Category */}
@@ -196,15 +209,33 @@ const AddProducts = () => {
           <div className="mb-3 mt-3">
             <label htmlFor="manufacturingInfo">ManufacturingInfo:</label>
             <textarea className="form-control" type="text" placeholder='Enter manufacturingInfo' name='manufacturingInfo' id='manufacturingInfo' value={productData.manufacturingInfo} onChange={handleChange} ></textarea>
- 
+
           </div>
- 
+
           <button type="submit" className="btn btn-info mt-1">Add Products</button>
         </div>
       </form>
       <ImageUpload setOptimisedImageUrl={setOptimisedImageUrl} OptimisedImageUrl={OptimisedImageUrl} />
     </div>
-  );
+  ) : (
+    <>
+      <p className="fw-bold text-center text-muted fs-1 mt-4 mb-2   ">
+        Please First sign in first to get access Add Products!
+      </p>
+      <div className="  ">
+        <Image
+          src={logInFirst}
+          alt='please Sign First to  get access'
+          height={600}
+          width={650}
+          className="p-0  border border-2 border-muted  rounded mx-auto d-block"
+        />
+      </div>
+    </>
+  )
+
+
+
 
 
 

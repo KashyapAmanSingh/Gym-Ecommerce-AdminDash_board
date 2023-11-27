@@ -20,23 +20,22 @@
  
  export const Loader1 = () => {
   return (
-    <div>
-     <ThreeCircles
-  height="100"
-  width="100"
-  color="#4fa94d"
-  wrapperStyle={{}}
-  wrapperClass=""
-  visible={true}
-  ariaLabel="three-circles-rotating"
-  outerCircleColor="red"
-  innerCircleColor="grey"
-  middleCircleColor="blue"
-/>
+    <div className="">
 
-
+      <ThreeCircles
+        height="100"
+        width="100"
+        color="#4fa94d"
+        wrapperStyle={{}}
+        wrapperClass=""
+        visible={true}
+        ariaLabel="three-circles-rotating"
+        outerCircleColor="red"
+        innerCircleColor="grey"
+        middleCircleColor="blue"
+      />
     </div>
-  )
+  );
 }
 
   
