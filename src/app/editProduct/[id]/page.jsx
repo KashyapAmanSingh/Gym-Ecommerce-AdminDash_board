@@ -5,14 +5,9 @@
 import React from 'react';
 import EditProductForm from '../../../../Component/EditProductForm';
  
-
-
-
 const getProductById = async (id) => {
   try {
-    // const apiPort = process.env.NEXT_PUBLIC_API_PORT || 3000;
-    // const apiUrl = `http://localhost:${apiPort}/api/Products/${id}`; 
-
+ 
     const res = await fetch(`/api/products/${id}`, {
       cache: 'no-store',
     });
