@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import React from 'react'
-import loginFirst from "../../public/loginFirst.jpg"
+import logInFirst from "../../public/logInFirst.jpg"
 export default function Home() {
   return (
     <>
@@ -9,7 +9,7 @@ export default function Home() {
       </p>
       <div className="  ">
         <Image
-          src={loginFirst}
+          src={logInFirst}
           alt='please Sign First to  get access'
           height={600}
           width={650}
