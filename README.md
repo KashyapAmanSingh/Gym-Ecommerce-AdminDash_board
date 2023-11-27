@@ -106,7 +106,32 @@ Securely access the dashboard with user authentication through Kinder Auth.
 
 
 
-
+# Application Code Structure
+```
+├───public
+└───src
+    ├───app
+    │   ├───addProducts
+    │   ├───api
+    │   │   ├───adminOrder
+    │   │   ├───auth
+    │   │   │   └───[kindeAuth]
+    │   │   ├───changing
+    │   │   ├───kindeSession
+    │   │   └───products
+    │   │       └───[id]
+    │   ├───dashboard
+    │   ├───editProduct
+    │   │   └───[id]
+    │   ├───Inventory
+    │   ├───login
+    │   ├───mainChart
+    │   ├───NvBr
+    │   ├───PresentProducts
+    │   ├───Profile
+    │   └───revenue
+    └───utlility
+```
 
 
 
