@@ -17,16 +17,18 @@ const Orders = () => {
       const templateParams = {
         to_name: `${given_name} ${family_name}`,
         from_name: "Your Name", // Replace with your name
-        from_email: "arbalaji457@gmail.com", // Replace with your email
+        from_email: process.env.NEXT_PUBLIC_EMAILJS_From_Email_KEY, // Replace with your email
         to_email: email,
         invoice_link: invoice_pdf,
       };
-
+ 
+  console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"  ,  process.env.NEXT_PUBLIC_EMAIL_SERVICE_KEY,process.env.NEXT_PUBLIC_EMAIL_SECRET_KEY,
+  process.env.NEXT_PUBLIC_EMAIL_TEMPLATE_KEY)
       const response = await emailjs.send(
-        "service_3m51kkn",
-        "template_ueu00mc",
+        process.env.NEXT_PUBLIC_EMAIL_SERVICE_KEY,
+        process.env.NEXT_PUBLIC_EMAIL_TEMPLATE_KEY,
         templateParams,
-        "x6kK401MTrP5n9G7U"
+        process.env.NEXT_PUBLIC_EMAIL_SECRET_KEY
       );
 
       console.log("Email sent:", response.text);

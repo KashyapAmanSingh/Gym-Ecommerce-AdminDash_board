@@ -49,7 +49,6 @@ const AddProducts = () => {
     }
   };
 
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -64,9 +63,7 @@ const AddProducts = () => {
           images: OptimisedImageUrl,
           dateAdded: new Date(),
         }),
-
-
-      });
+  });
       if (res.ok) {
 
         window.location.href = '/';
@@ -77,10 +74,7 @@ const AddProducts = () => {
       console.error(error);
       return NextResponse.error("Failed to create the Product", { status: 500 });
     }
-
-
-
-  };
+ };
 
   const fieldNames = [
     'title',
@@ -95,16 +89,9 @@ const AddProducts = () => {
     'model',
 
   ];
-
-
-
-
-
-
+ 
   if (isLoading) return (<div className="d-flex justify-content-center align-items-center vh-100"><ThreeCircles /></div>)
-
-
-
+ 
   return isAuthenticated ? (
     <div>
       <form onSubmit={handleSubmit}>
@@ -198,8 +185,6 @@ const AddProducts = () => {
             </select>
           </div>
 
-
-
           <div className="mb-3 mt-3">
             <label htmlFor="legalDisclaimer">LegalDisclaimer:</label>
 
@@ -233,12 +218,6 @@ const AddProducts = () => {
       </div>
     </>
   )
-
-
-
-
-
-
 }
 
 export default AddProducts
