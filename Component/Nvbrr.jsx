@@ -75,8 +75,8 @@ const Nvbrr = () => {
               ) : (
 
                 <li className="nav-item ">
-                  <TbLogout size={40} className='ms-4' color="white" /><span className="d-none   d-sm-none d-md-none d-lg-inline ms-0  ">
-                    <LoginLink className='text-light fw-bold  fs-3'> {isLoading ? <div className='fs-4  fw-medium'>Loading..</div> :"Sign in"}</LoginLink>
+                  <span className="ms-0  ">
+                    <LoginLink className='text-light fw-bold  fs-3'> <TbLogout size={40} className='ms-4' color="white" />{isLoading ? <div className='fs-4  fw-medium'>Loading..</div> :<div className='d-none   d-sm-none d-md-none d-lg-inline'>Sign in</div> }</LoginLink>
 
                   </span>
                 </li>
