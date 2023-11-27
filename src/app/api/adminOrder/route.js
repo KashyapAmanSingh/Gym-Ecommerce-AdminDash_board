@@ -43,6 +43,9 @@ export async function GET() {
             as: "usersIdDetails",
           },
         },
+        {
+          $sort: { orderDate: -1 }  
+        },
       ])
       .toArray();
 
