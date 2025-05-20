@@ -6,5 +6,4 @@ import Orders from '../../Component/dashBoardUi/orders'
         <Orders/>
     </div>
   )
-  
 }
