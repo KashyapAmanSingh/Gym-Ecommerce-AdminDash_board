@@ -8,7 +8,10 @@ export async function GET() {
   try {
     await connectMongoDB();
 
-    const adminOrder = await mongoose.connection
+// ...existing code...
+    await connectMongoDB();
+
+    const adminOrder = await mongoose.connection.db
       .collection("adminorders")
       .aggregate([
         {
@@ -48,6 +51,7 @@ export async function GET() {
         },
       ])
       .toArray();
+// ...existing code...
 
     return NextResponse.json({
       message: "Fetched successfully",
