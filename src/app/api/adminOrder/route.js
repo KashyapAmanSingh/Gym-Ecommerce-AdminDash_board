@@ -51,8 +51,7 @@ export async function GET() {
         },
       ])
       .toArray();
-// ...existing code...
-
+ 
     return NextResponse.json({
       message: "Fetched successfully",
       adminOrders: adminOrder,
